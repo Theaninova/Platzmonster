@@ -1,28 +1,47 @@
 $card-border-radius: 16px;
 $card-shadow: 4px 4px 0 black;
 $card-border: 2px solid black;
+$card-transition-duration: 0.1s;
 
-$primary-color: #5500ff;
+$primary-color: #0763f7;
 $accent-color: #ffad7a;
+$accent-color-filter: invert(80%) sepia(6%) saturate(5116%) hue-rotate(318deg) brightness(101%) contrast(111%);
 $black: #000;
 $white: #fff;
+
+$breakpoint-phone: 640px;
+
+.card,
+.button {
+  border: $card-border;
+}
 
 .card {
   border-radius: $card-border-radius;
   box-shadow: $card-shadow;
-  border: $card-border;
+  padding-inline: 8px;
+  padding-block: 2px;
+  margin-right: 4px;
 }
 
 .button {
   display: block;
   padding: 4px;
+  cursor: pointer;
+  margin-right: 2px;
+
   border-radius: 8px;
+
   box-shadow: 2px 2px 0 black;
-  border: $card-border;
-  transition: all 0.1s ease-in-out;
+
+  text-transform: uppercase;
+  font-weight: bold;
+
+  transition: all $card-transition-duration ease-in-out;
 }
 
-.button:hover, .button:active {
+.button:hover,
+.button:active {
   box-shadow: 4px 4px 0 black;
   transform: translate(-2px, -2px);
 }

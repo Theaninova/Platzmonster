@@ -29,7 +29,7 @@
   }
 
   body {
-    font-family: sans-serif;
+    font-family: "Kanit", sans-serif;
 
     color: white;
     background: $primary-color;
