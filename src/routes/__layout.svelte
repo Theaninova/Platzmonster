@@ -23,7 +23,7 @@
   @import "../lib/styles/styles.scss";
 
   h1 {
-    font-size: 6rem;
+    font-size: clamp(3rem, -4rem + 22.8571vw, 6rem);
     margin-block: 1rem;
     color: $accent-color;
   }
