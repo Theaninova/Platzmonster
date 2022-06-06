@@ -1,7 +1,16 @@
 import mongoose from "mongoose"
 
+export enum UserType {
+  ADMIN = "admin",
+  USER = "user",
+}
+
 const UserSchema = new mongoose.Schema({
   name: {
+    required: true,
+    type: String,
+  },
+  userType: {
     required: true,
     type: String,
   },
