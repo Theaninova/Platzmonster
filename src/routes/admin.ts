@@ -1,8 +1,7 @@
-/** @type {import('./__types/[id]').RequestHandler} */
 import {User} from "../lib/models/user"
+import type {RequestHandler} from "./__types/admin"
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function get({params}) {
+export async function get() {
   return {
     body: {
       users: await User.find(),
@@ -10,8 +9,7 @@ export async function get({params}) {
   }
 }
 
-/** @type {import('./index').RequestHandler} */
-export async function post({request}) {
+export const post: RequestHandler = async ({request}) => {
   const form = await request.formData()
 
   const user = await User.findByIdAndDelete(form.get("delete"))
