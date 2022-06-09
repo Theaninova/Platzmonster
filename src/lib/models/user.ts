@@ -10,6 +10,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
     type: String,
   },
+  matrikelNumber: {
+    required: true,
+    type: Number,
+  },
   userType: {
     required: true,
     type: String,
@@ -22,3 +26,8 @@ const UserSchema = new mongoose.Schema({
 })
 
 export const User = mongoose.model("User", UserSchema)
+
+interface A {
+  name: string
+  matrikelNumber: number
+}

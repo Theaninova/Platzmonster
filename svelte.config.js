@@ -8,6 +8,10 @@ const config = {
   preprocess: preprocess(),
 
   kit: {
+    browser: {
+      hydrate: false,
+      router: false,
+    },
     adapter: adapter(),
   },
 }

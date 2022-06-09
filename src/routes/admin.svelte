@@ -1,11 +1,9 @@
-<script>
+<script lang="ts">
+  import type {User} from "../lib/models/user"
 
-    import Component2 from "../lib/components/Component2.svelte";
+  export let users: User[]
+
+  import UserList from "../lib/components/UserList.svelte"
 </script>
 
-
-
-
-<Component2>
-
-</Component2>
+<UserList {users} />
