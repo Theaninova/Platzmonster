@@ -1,8 +1,17 @@
 import mongoose from "mongoose"
 
+export const PASSWORD_SALT_ROUNDS = 10
+
 export enum UserType {
   ADMIN = "admin",
   USER = "user",
+}
+
+export interface IUser {
+  name: string
+  matrikelNumber: number
+  userType: UserType
+  password: string
 }
 
 const UserSchema = new mongoose.Schema({
@@ -18,16 +27,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
     type: String,
   },
-  // TODO: make this not as unsafe as it is
   password: {
     required: true,
     type: String,
   },
 })
 
-export const User = mongoose.model("User", UserSchema)
-
-interface A {
-  name: string
-  matrikelNumber: number
-}
+export const User = mongoose.model<IUser>("User", UserSchema)

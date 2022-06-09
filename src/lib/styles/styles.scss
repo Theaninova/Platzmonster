@@ -12,6 +12,7 @@ $white: #fff;
 $breakpoint-phone: 640px;
 
 .card,
+button,
 .button {
   border: $card-border;
 }
@@ -24,6 +25,7 @@ $breakpoint-phone: 640px;
   margin-right: 4px;
 }
 
+button,
 .button {
   display: block;
   padding: 4px;
@@ -40,6 +42,8 @@ $breakpoint-phone: 640px;
   transition: all $card-transition-duration ease-in-out;
 }
 
+button:hover,
+button:active,
 .button:hover,
 .button:active {
   box-shadow: 4px 4px 0 black;
