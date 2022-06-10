@@ -36,6 +36,6 @@
     background: $primary-color;
 
     display: grid;
-    grid-template-rows: 76px auto;
+    grid-template-rows: min-content auto;
   }
 </style>

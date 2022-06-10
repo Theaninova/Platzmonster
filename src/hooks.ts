@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import type {Handle} from "@sveltejs/kit"
+import type {GetSession, Handle} from "@sveltejs/kit"
 import {parse} from "cookie"
 import {SESSION_COOKIE_NAME} from "./lib/session/sessionHandler"
 import {Session} from "./lib/models/session"
@@ -21,4 +21,11 @@ export const handle: Handle = async ({event, resolve}) => {
   }
 
   return resolve(event)
+}
+
+export const getSession: GetSession = async ({locals}) => {
+  console.log(locals)
+  return {
+    user: locals.user ? JSON.parse(JSON.stringify(locals.user)) : null,
+  }
 }

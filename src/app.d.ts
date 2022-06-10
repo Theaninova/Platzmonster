@@ -10,6 +10,15 @@ declare namespace App {
   }
 
   // interface Platform {}
-  // interface Session {}
+
+  interface Session {
+    user?:
+      | (import("./lib/models/user").IUser & {
+          _id: string
+          __v: number
+        })
+      | null
+  }
+
   // interface Stuff {}
 }

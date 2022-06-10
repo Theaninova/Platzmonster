@@ -5,6 +5,8 @@ $card-transition-duration: 0.1s;
 
 $primary-color: #0763f7;
 $accent-color: #ffad7a;
+$error-color: #ff7b4a;
+$on-error-color: black;
 $accent-color-filter: invert(80%) sepia(6%) saturate(5116%) hue-rotate(318deg) brightness(101%) contrast(111%);
 $black: #000;
 $white: #fff;
@@ -22,10 +24,20 @@ h2 {
   color: black;
 }
 
+i,
+.icon-18 {
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 18;
+  font-family: "Material Symbols Rounded";
+  font-size: 18px;
+  font-style: inherit;
+}
+
 .card,
 button,
 .button {
   border: $card-border;
+
+  color: black;
 }
 
 .card {
@@ -39,17 +51,28 @@ button,
 
 button,
 .button {
-  display: block;
-  padding: 4px;
-  cursor: pointer;
-  margin-right: 2px;
+  appearance: unset;
 
+  display: flex;
+  cursor: pointer;
+  padding: 18px 4px;
+  margin: 0 2px 0 0;
+  gap: 6px;
+
+  height: 36px;
+
+  box-sizing: border-box;
   border-radius: 8px;
+  align-items: center;
 
   box-shadow: 2px 2px 0 black;
 
   text-transform: uppercase;
+  font-style: unset;
+  font-family: inherit;
   font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
 
   transition: all $card-transition-duration ease-in-out;
 }

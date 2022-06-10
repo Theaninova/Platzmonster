@@ -1,7 +1,7 @@
 import {PASSWORD_SALT_ROUNDS, User, UserType} from "../lib/models/user"
 import type {RequestHandler} from "./__types/index"
-import {logIn, logOut} from "../lib/session/sessionHandler"
 import bcrypt from "bcrypt"
+import {logIn} from "../lib/session/sessionHandler"
 
 export const get: RequestHandler = async ({locals}) => {
   return {
@@ -12,34 +12,10 @@ export const get: RequestHandler = async ({locals}) => {
   }
 }
 
-export const post: RequestHandler = async ({locals, request}) => {
+export const post: RequestHandler = async ({request}) => {
   const data = await request.formData()
 
-  if (data.has("logIn")) {
-    const cookies = await logIn("Tom", "adslfkjad")
-
-    return cookies
-      ? {
-          status: 302,
-          headers: {
-            "location": "/",
-            "Set-Cookie": cookies,
-          },
-        }
-      : {
-          status: 401,
-        }
-  } else if (data.has("logOut")) {
-    const cookies = await logOut(locals.sessionId)
-
-    return {
-      status: 302,
-      headers: {
-        "location": "/",
-        "Set-Cookie": cookies,
-      },
-    }
-  } else if (data.has("insert")) {
+  if (data.has("insert")) {
     await new User({
       name: "John",
       matrikelNumber: 123423,
