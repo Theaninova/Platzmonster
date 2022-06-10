@@ -5,7 +5,7 @@ import bcrypt from "bcrypt"
 
 export const get: RequestHandler = async ({locals}) => {
   return {
-    status: 200,
+    status: 202,
     body: {
       user: locals.user,
     },
@@ -16,15 +16,19 @@ export const post: RequestHandler = async ({locals, request}) => {
   const data = await request.formData()
 
   if (data.has("logIn")) {
-    const cookies = (await logIn("Tom", "adslfkjad")) as string
+    const cookies = await logIn("Tom", "adslfkjad")
 
-    return {
-      status: 302,
-      headers: {
-        "location": "/",
-        "Set-Cookie": cookies,
-      },
-    }
+    return cookies
+      ? {
+          status: 302,
+          headers: {
+            "location": "/",
+            "Set-Cookie": cookies,
+          },
+        }
+      : {
+          status: 401,
+        }
   } else if (data.has("logOut")) {
     const cookies = await logOut(locals.sessionId)
 

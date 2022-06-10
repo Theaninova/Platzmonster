@@ -11,6 +11,17 @@ $white: #fff;
 
 $breakpoint-phone: 640px;
 
+h1 {
+  font-size: clamp(3rem, -4rem + 22.8571vw, 6rem);
+  margin-block: 1rem;
+  color: $accent-color;
+}
+
+h2 {
+  margin-block: 0.5rem;
+  color: black;
+}
+
 .card,
 button,
 .button {
@@ -23,6 +34,7 @@ button,
   padding-inline: 8px;
   padding-block: 2px;
   margin-right: 4px;
+  margin-bottom: 4px;
 }
 
 button,

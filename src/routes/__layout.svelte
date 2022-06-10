@@ -9,23 +9,24 @@
 <script>
   import "../lib/styles/styles.scss"
   import Navigation from "../lib/components/Navigation.svelte"
+  import PageTransition from "../lib/components/PageTransition.svelte"
 
   export let activeRoute
 </script>
 
 <Navigation {activeRoute} />
 
-<main>
+<PageTransition {activeRoute}>
   <slot />
-</main>
+</PageTransition>
 
 <style global lang="scss">
   @import "../lib/styles/styles.scss";
 
-  h1 {
-    font-size: clamp(3rem, -4rem + 22.8571vw, 6rem);
-    margin-block: 1rem;
-    color: $accent-color;
+  html,
+  body {
+    overflow: hidden;
+    height: 100%;
   }
 
   body {
@@ -33,5 +34,8 @@
 
     color: white;
     background: $primary-color;
+
+    display: grid;
+    grid-template-rows: 76px auto;
   }
 </style>

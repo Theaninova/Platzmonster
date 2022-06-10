@@ -1,19 +1,19 @@
 <script lang="ts">
-  import {IUser} from "../lib/models/user"
+  import type {IUser} from "../lib/models/user"
 
   export let user: IUser
 </script>
 
 <h1>Platzmonster</h1>
 
-<form method="post">
-  <button type="submit" name="insert">Insert Dummy Data</button>
+<form method="post" class="card">
+  <h2 style="grid-column: span 2;">Debug Control</h2>
 
-  <div class="row">
-    <button type="submit" name="logIn">Login</button>
+  <button style="grid-column: span 2" type="submit" name="insert">Insert Dummy Data</button>
 
-    <button type="submit" name="logOut">Logout</button>
-  </div>
+  <button type="submit" name="logIn">Login</button>
+
+  <button type="submit" name="logOut">Logout</button>
 </form>
 
 <p>You are logged {user ? "in" : "out"}</p>
@@ -22,9 +22,13 @@
 {/if}
 
 <style>
-  .row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  form {
+    width: max-content;
+    background: white;
+    padding: 16px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 </style>

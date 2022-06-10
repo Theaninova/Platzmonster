@@ -28,6 +28,9 @@
 
     background: $white;
     color: $black;
+
+    grid-column: 1;
+    grid-row: 1;
   }
 
   a {
