@@ -15,7 +15,7 @@ export const get: RequestHandler = async ({locals}) => {
 export const post: RequestHandler = async ({request}) => {
   const data = await request.formData()
 
-  if (data.has("insert")) {
+  console.log("adsf")
     await new User({
       name: "John",
       matrikelNumber: 123423,
@@ -46,7 +46,4 @@ export const post: RequestHandler = async ({request}) => {
     }
   }
 
-  return {
-    status: 400,
-  }
-}
+

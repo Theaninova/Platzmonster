@@ -11,8 +11,9 @@
 <section class="card">
   <form method="post" use:enhance>
     <h2 style="grid-column: span 2;">Debug Control</h2>
+    <button style="grid-column: span 2" type="submit" name="insert">Insert Dummy Data</button>
   </form>
-  <button style="grid-column: span 2" type="submit" name="insert">Insert Dummy Data</button>
+
 
   <form
     use:enhance={{
