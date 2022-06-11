@@ -17,7 +17,7 @@
 >
 
 <style lang="scss">
-  @import "../styles/styles.scss";
+  @import "../../styles/styles";
 
   svg {
     display: block;

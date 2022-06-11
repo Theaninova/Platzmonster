@@ -8,13 +8,13 @@
 
 <script>
   import "../lib/styles/styles.scss"
-  import Navigation from "../lib/components/Navigation.svelte"
+  import Navigation from "../lib/components/navigation/Navigation.svelte"
   import PageTransition from "../lib/components/PageTransition.svelte"
 
   export let activeRoute
 </script>
 
-<Navigation {activeRoute} />
+<Navigation />
 
 <PageTransition {activeRoute}>
   <slot />
