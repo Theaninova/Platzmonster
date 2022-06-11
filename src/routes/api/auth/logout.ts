@@ -5,7 +5,9 @@ export const post: RequestHandler = async ({locals}) => {
   const cookies = await logOut(locals.sessionId)
 
   return {
+    status: 302,
     headers: {
+      "Location": "/",
       "Set-Cookie": cookies,
     },
   }
