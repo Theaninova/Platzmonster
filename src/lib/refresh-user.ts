@@ -9,8 +9,6 @@ export const refreshUser: FormResponseHandler = async () => {
   })
   const user = await response.json()
 
-  console.log(user)
-
   session.update(it => ({
     ...it,
     user,

@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
+    "dev:e2e": "cross-env DATABASE=platzmonster-e2e svelte-kit dev",
     "build": "svelte-kit build",
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
     "prepare": "svelte-kit sync",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "cypress:open": "cypress open",
     "lint": "prettier --check --plugin-search-dir=. . && eslint .",
     "optimize-images": "node optimize-images.js",
     "format": "prettier --write --plugin-search-dir=. ."
@@ -37,8 +39,10 @@
     "svelte-preprocess": "^4.10.1",
     "tslib": "^2.3.1",
     "mongoose": "^6.3.5",
+    "cross-env": "^7.0.3",
     "pre-commit": "^1.2.2",
-    "typescript": "~4.6.2"
+    "typescript": "~4.6.2",
+    "cypress": "^10.1.0"
   },
   "dependencies": {
     "sass": "1.52.2",

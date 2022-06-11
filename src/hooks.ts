@@ -5,7 +5,7 @@ import {SESSION_COOKIE_NAME} from "./lib/session/sessionHandler"
 import {Session} from "./lib/models/session"
 import {User} from "./lib/models/user"
 
-const connection = mongoose.connect("mongodb://localhost:27017/platzmoster")
+const connection = mongoose.connect(`mongodb://localhost:27017/${process.env.DATABASE || "platzmoster"}`)
 
 export const handle: Handle = async ({event, resolve}) => {
   await connection
@@ -24,7 +24,6 @@ export const handle: Handle = async ({event, resolve}) => {
 }
 
 export const getSession: GetSession = async ({locals}) => {
-  console.log(locals)
   return {
     user: locals.user ? JSON.parse(JSON.stringify(locals.user)) : null,
   }

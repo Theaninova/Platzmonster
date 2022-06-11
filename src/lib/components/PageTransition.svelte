@@ -12,7 +12,7 @@
 {/key}
 
 <style lang="scss">
-  @import "../styles/styles.scss";
+  @import "../styles/theme.scss";
 
   main,
   .scroll-fade {

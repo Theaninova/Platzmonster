@@ -1,11 +1,12 @@
 import type {RequestHandler} from "@sveltejs/kit"
 import {logIn} from "../../../lib/session/sessionHandler"
+import {MOCK_ADMIN} from "../../../lib/models/mock/seed"
 
 export const post: RequestHandler = async ({request}) => {
   const form = await request.formData()
   form.get("name")
 
-  const cookies = await logIn("John", "vogel")
+  const cookies = await logIn(MOCK_ADMIN.username, MOCK_ADMIN.password)
 
   return cookies
     ? {

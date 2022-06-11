@@ -28,7 +28,7 @@
 </nav>
 
 <style lang="scss">
-  @import "../../styles/styles";
+  @import "../../styles/theme";
 
   nav {
     display: grid;

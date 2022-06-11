@@ -14,7 +14,7 @@
 </form>
 
 <style lang="scss">
-  @import "../../styles/styles";
+  @import "../../styles/theme";
 
   .logout:hover {
     background: $error-color;

@@ -12,7 +12,7 @@
 </li>
 
 <style lang="scss">
-  @import "../../styles/styles";
+  @import "../../styles/theme";
 
   .activeRoute {
     background: $accent-color;
