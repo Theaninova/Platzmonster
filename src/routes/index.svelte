@@ -14,7 +14,6 @@
     <button style="grid-column: span 2" type="submit" name="insert">Insert Dummy Data</button>
   </form>
 
-
   <form
     use:enhance={{
       result: refreshUser,

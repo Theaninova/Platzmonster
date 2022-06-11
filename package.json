@@ -13,7 +13,9 @@
     "optimize-images": "node optimize-images.js",
     "format": "prettier --write --plugin-search-dir=. ."
   },
-  "pre-commit": ["format"],
+  "pre-commit": [
+    "format"
+  ],
   "devDependencies": {
     "@sveltejs/adapter-node": "1.0.0-next.78",
     "@sveltejs/kit": "1.0.0-next.350",
