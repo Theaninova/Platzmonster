@@ -9,9 +9,10 @@
 <h1>Platzmonster</h1>
 
 <section class="card">
-  <form method="post" use:enhance>
-    <h2 style="grid-column: span 2;">Debug Control</h2>
-    <button style="grid-column: span 2" type="submit" name="insert">Insert Dummy Data</button>
+  <h2 style="grid-column: span 2;">Debug Control</h2>
+
+  <form style="grid-column: span 2" method="post" use:enhance>
+    <button type="submit" name="insert">Insert Dummy Data</button>
   </form>
 
   <form
