@@ -1,16 +1,7 @@
 import {PASSWORD_SALT_ROUNDS, User, UserType} from "../user"
 import bcrypt from "bcrypt"
 import mockUsers from "./MOCK_DATA.json"
-
-export const MOCK_ADMIN = {
-  username: "admin",
-  password: "123456",
-  email: "a@b.c",
-  firstName: "admin",
-  lastName: "admin",
-  profilePicture: null as null | string,
-  matrikelNumber: 0,
-}
+import {MOCK_ADMIN} from "./admin"
 
 export type AccountInfo = typeof MOCK_ADMIN
 
