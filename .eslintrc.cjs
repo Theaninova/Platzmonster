@@ -8,7 +8,7 @@ module.exports = {
   settings: {
     "svelte3/typescript": () => require("typescript"),
   },
-  "rules": {
+  rules: {
     "@typescript-eslint/no-non-null-assertion": "off",
   },
   parserOptions: {
