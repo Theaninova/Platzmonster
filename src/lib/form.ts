@@ -1,4 +1,4 @@
-import {invalidate} from "$app/navigation"
+import {goto, invalidate} from "$app/navigation"
 
 export type FormResponseHandler = ({
   data,
@@ -63,11 +63,12 @@ export function enhance(
 
         if (!redirect) {
           await invalidate(() => true)
-        } else {
+        } else if (typeof redirect === "string") {
           const url = new URL(form.action)
           url.pathname = redirect || url.pathname
           url.search = url.hash = ""
-          await invalidate(url.href)
+          console.log(url.href)
+          await goto(redirect)
         }
       } else if (error) {
         error({data, form, error: null, response})

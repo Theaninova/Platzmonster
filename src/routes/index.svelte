@@ -45,6 +45,7 @@
     width: max-content;
     background: white;
     padding: 16px;
+    margin-inline: auto;
 
     color: black;
 

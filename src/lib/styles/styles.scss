@@ -4,6 +4,9 @@ h1 {
   font-size: clamp(3rem, -4rem + 22.8571vw, 6rem);
   margin-block: 1rem;
   color: $accent-color;
+
+  width: max-content;
+  margin-inline: auto;
 }
 
 h2 {
@@ -19,6 +22,15 @@ i,
   font-style: inherit;
 }
 
+label > i,
+.icon-24 {
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
+  font-family: "Material Symbols Rounded";
+  font-size: 24px;
+  font-style: inherit;
+}
+
+.input-group,
 .card,
 button,
 .button {
@@ -36,6 +48,7 @@ button,
   margin-bottom: 4px;
 }
 
+.input-group,
 button,
 .button {
   appearance: unset;
@@ -49,7 +62,7 @@ button,
   height: 36px;
 
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: $button-border-radius;
   align-items: center;
 
   box-shadow: 2px 2px 0 black;
@@ -70,4 +83,50 @@ button:active,
 .button:active {
   box-shadow: 4px 4px 0 black;
   transform: translate(-2px, -2px);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: unset;
+  height: 48px;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+
+  margin-block: 2px;
+
+  > input {
+    all: unset;
+    height: 100%;
+    margin: 0;
+    padding-inline: 8px;
+
+    border-left: $card-border;
+    width: 0;
+    min-width: 100%;
+
+    text-transform: none;
+  }
+
+  > input[type="password"] {
+    -webkit-text-security: none !important;
+  }
+
+  > label {
+    padding-inline: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    background: black;
+    color: white;
+  }
+}
+
+.input-group > input:focus {
+  background: $accent-color;
 }
