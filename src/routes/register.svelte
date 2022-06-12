@@ -1,64 +1,71 @@
 <script>
   import {enhance} from "../lib/form"
+  import PasswordInput from "../lib/components/PasswordInput.svelte"
 </script>
 
-<form method="post" action="/register" use:enhance={{redirect: "/"}}>
-  <h1>Register</h1>
+<h1>Register</h1>
 
-  <label for="registerusertype">Usertype</label><br />
-  <select id="registerusertype" name="registerusertype">
-    <option value="user">User</option>
-    <option value="admin">Admin</option>
+<form method="post" action="/register" use:enhance={{redirect: "/"}} class="card">
+  <div class="input-group">
+    <label for="registerusertype"><i>badge</i>type</label>
+    <select id="registerusertype" name="registerusertype" required>
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+  </div>
 
-    required />
-  </select>
-  <br /><br />
+  <div class="input-group">
+    <label for="regusername"><i>account_circle</i></label>
+    <input
+      id="regusername"
+      type="text"
+      name="name"
+      maxlength="30"
+      size="30"
+      placeholder="Wähle einen Usernamen aus"
+      required
+    />
+  </div>
 
-  <label for="regusername">Username</label><br />
-  <input
-    id="regusername"
-    type="text"
-    name="name"
-    maxlength="30"
-    size="30"
-    placeholder="Wähle einen Usernamen aus"
-    required
-  /><br /><br />
+  <div class="input-group">
+    <label for="regvorname">Vorname</label>
+    <input
+      id="regvorname"
+      type="text"
+      name="vorname"
+      maxlength="30"
+      size="30"
+      placeholder="Gebe deinen Vornamen ein"
+      required
+    />
+  </div>
 
-  <label for="regvorname">Vorname</label><br />
-  <input
-    id="regvorname"
-    type="text"
-    name="vorname"
-    maxlength="30"
-    size="30"
-    placeholder="Gebe deinen Vornamen ein"
-    required
-  /><br /><br />
+  <div class="input-group">
+    <label for="regnachname">Nachname</label>
+    <input
+      type="text"
+      id="regnachname"
+      name="nachname"
+      maxlength="30"
+      size="30"
+      placeholder="Gebe deinen Nachnamen ein"
+    />
+  </div>
 
-  <label for="regnachname">Nachname</label><br />
-  <input
-    type="text"
-    id="regnachname"
-    name="nachname"
-    maxlength="30"
-    size="30"
-    placeholder="Gebe deinen Nachnamen ein"
-  /><br /><br />
+  <div class="input-group">
+    <label for="regemail"><i>alternate_email</i></label>
+    <input
+      id="regemail"
+      type="email"
+      name="email"
+      maxlength="30"
+      size="30"
+      placeholder="Gebe deine E-Mail-Adresse an"
+      required
+    />
+  </div>
 
-  <label for="regemail">Email</label><br />
-  <input
-    id="regemail"
-    type="email"
-    name="email"
-    maxlength="30"
-    size="30"
-    placeholder="Gebe deine E-Mail-Adresse an"
-    required
-  /><br /><br />
-
-  <label for="regpassword">Passwort</label><br />
-  <input
+  <PasswordInput
     id="regpassword"
     type="password"
     name="password"
@@ -67,10 +74,12 @@
     size="30"
     placeholder="Wähle ein Passwort aus"
     required
-  /><br /><br />
+  >
+    <!--suppress XmlInvalidId -->
+    <label for="regpassword"><i>password</i></label>
+  </PasswordInput>
 
-  <label for="passwordConfirmation">Passwort wiederholen</label><br />
-  <input
+  <PasswordInput
     id="passwordConfirmation"
     type="password"
     name="passwordConfirmation"
@@ -79,16 +88,33 @@
     size="30"
     placeholder="Wiederhole das Passwort"
     required
-  /><br />
+  >
+    <!--suppress XmlInvalidId -->
+    <label for="regpassword"><i>password</i></label>
+  </PasswordInput>
 
-  <label for="agb" /><br />
-  <input type="checkbox" id="agb" name="agb" required />Mit der Anmeldung bestätige ich, dass ich die
-  Allgemeinen Geschäftsbedingungen akzeptiere und die Datenschutzrichtlinien gelesen habe.<br /><br />
+  <p>
+    <input type="checkbox" id="agb" name="agb" required />
+    Mit der Anmeldung bestätige ich, dass ich die Allgemeinen Geschäftsbedingungen akzeptiere und die Datenschutzrichtlinien
+    gelesen habe.
+  </p>
 
   <button type="submit"> Account erstellen </button>
 </form>
 
 <style>
+  .card {
+    background: white;
+    color: black;
+    max-width: 400px;
+    margin-inline: auto;
+
+    padding: 16px;
+
+    display: grid;
+    gap: 4px;
+  }
+
   input:invalid {
     box-shadow: 0 0 5px 1px red;
   }
