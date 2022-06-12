@@ -10,14 +10,5 @@
   method="post"
   action="/api/auth/logout"
 >
-  <button class="logout"><i>logout</i></button>
+  <button class="danger-button"><i>logout</i></button>
 </form>
-
-<style lang="scss">
-  @import "../../styles/theme";
-
-  .logout:hover {
-    background: $error-color;
-    color: $on-error-color;
-  }
-</style>

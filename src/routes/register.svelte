@@ -7,7 +7,7 @@
 
 <form method="post" action="/register" use:enhance={{redirect: "/"}} class="card">
   <div class="input-group">
-    <label for="registerusertype"><i>badge</i>type</label>
+    <label for="registerusertype"><i>badge</i>&nbsp;type</label>
     <select id="registerusertype" name="registerusertype" required>
       <option value="user">User</option>
       <option value="admin">Admin</option>

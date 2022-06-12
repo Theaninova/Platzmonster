@@ -85,6 +85,11 @@ button:active,
   transform: translate(-2px, -2px);
 }
 
+.danger-button:hover {
+  background: $error-color;
+  color: $on-error-color;
+}
+
 .input-group {
   display: flex;
   flex-direction: row;

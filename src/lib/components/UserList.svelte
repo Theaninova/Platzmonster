@@ -4,51 +4,73 @@
   export let users: User[]
 </script>
 
-<h2>User List</h2>
+<div class="card">
+  <h2>User List</h2>
 
-<td> <button type="button" class="button"> <a href="/login"> Create New </a> </button> </td>
+  <form method="post">
+    <button type="submit" aria-hidden="true" style="display: none" />
+    <table class="table text-white">
+      <thead>
+        <tr>
+          <th scope="col" class="text-break d-none d-sm-table-cell">ID</th>
+          <th scope="col" class="text-break d-none d-sm-table-cell" width="100">Username</th>
+          <th scope="col" class="text-break d-table-cell d-sm-none" width="100">Mtr-Nr.</th>
+          <th scope="col" class="text-break d-table-cell d-sm-none">Password </th>
+        </tr>
+      </thead>
+      {#each users as { name, matrikelNumber, _id, password }, index}
+        <tr>
+          <th class="break-off">{_id}</th>
+          <td>
+            {name}
+          </td>
 
-<form method="post">
-  <button type="submit" aria-hidden="true" style="display: none" />
-  <table class="table text-white">
-    <thead>
-      <tr>
-        <th scope="col" class="text-break d-none d-sm-table-cell">ID</th>
-        <th scope="col" class="text-break d-none d-sm-table-cell" width="100">Username</th>
-        <th scope="col" class="text-break d-table-cell d-sm-none" width="100">Mtr-Nr.</th>
-        <th scope="col" class="text-break d-table-cell d-sm-none">Password </th>
-      </tr>
-    </thead>
-    {#each users as { name, matrikelNumber, _id, password }, index}
-      <tr>
-        <th scope="row" class="col-auto d-none d-sm-table-cell">{_id}</th>
-        <td class="text-break">
-          {name}
-        </td>
+          <td>
+            {matrikelNumber}
+          </td>
 
-        <td class="col-auto">
-          {matrikelNumber}
-        </td>
+          <td class="break-off">
+            {password}
+          </td>
 
-        <td class="col-auto">
-          {password}
-        </td>
+          <td> <button type="button" class="button"> <i>edit</i> </button> </td>
 
-        <td> <button type="button" class="button"> edit </button> </td>
+          <td>
+            <button type="submit" name="delete" class="button danger-button" value={_id}
+              ><i>delete_forever</i>
+            </button>
+          </td>
+        </tr>
+      {/each}
+    </table>
+  </form>
 
-        <td> <button type="submit" name="delete" class="button" value={_id}> delete </button> </td>
-      </tr>
-    {/each}
-  </table>
-</form>
+  <a href="/register" class="button" style="width: max-content"> Create New </a>
+</div>
 
 <style>
-  h2 {
-    font-size: xxx-large;
-    color: indianred;
+  .card {
+    background: white;
+    color: black;
+
+    max-width: max-content;
+    margin-inline: auto;
+
+    padding: 16px;
   }
 
-  tr {
-    color: white;
+  h2 {
+    padding-bottom: 16px;
+  }
+
+  .break-off {
+    max-width: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  td,
+  th {
+    text-align: center;
   }
 </style>
