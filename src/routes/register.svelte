@@ -1,14 +1,14 @@
 <script>
   import {enhance} from "../lib/form"
 
-  const requiredMessage = "This field is required"
 </script>
 
 <form method="post" action="/register" use:enhance={{redirect: "/"}}>
   <h1>Register</h1>
 
-  <label for="name">Username</label><br />
+  <label for="regusername">Username</label><br />
   <input
+    id="regusername"
     type="text"
     name="name"
     maxlength="30"
@@ -17,8 +17,9 @@
     required
   /><br /><br />
 
-  <label for="vorname">Vorname</label><br />
+  <label for="regvorname">Vorname</label><br />
   <input
+  id="regvorname"
     type="text"
     name="vorname"
     maxlength="30"
@@ -27,12 +28,13 @@
     required
   /><br /><br />
 
-  <label for="nachname">Nachname</label><br />
-  <input type="text" name="nachname" maxlength="30" size="30" placeholder="Gebe deinen Nachnamen ein" /><br
+  <label for="regnachname">Nachname</label><br />
+  <input type="text" id="regnachname" name="nachname" maxlength="30" size="30" placeholder="Gebe deinen Nachnamen ein" /><br
   /><br />
 
-  <label for="email">Email</label><br />
+  <label for="regemail">Email</label><br />
   <input
+  id="regemail"
     type="email"
     name="email"
     maxlength="30"
@@ -41,8 +43,9 @@
     required
   /><br /><br />
 
-  <label for="password">Passwort</label><br />
+  <label for="regpassword">Passwort</label><br />
   <input
+  id="regpassword"
     type="password"
     name="password"
     minlength="8"
@@ -54,6 +57,7 @@
 
   <label for="passwordConfirmation">Passwort wiederholen</label><br />
   <input
+  id="passwordConfirmation"
     type="password"
     name="passwordConfirmation"
     minlength="8"
@@ -64,7 +68,7 @@
   /><br />
 
   <label for="agb" /><br />
-  <input type="checkbox" name="agb" required />Mit der Anmeldung bestätige ich, dass ich die Allgemeinen
+  <input type="checkbox" id="agb" name="agb" required />Mit der Anmeldung bestätige ich, dass ich die Allgemeinen
   Geschäftsbedingungen akzeptiere und die Datenschutzrichtlinien gelesen habe.<br /><br />
 
   <button type="submit"> Account erstellen </button>
