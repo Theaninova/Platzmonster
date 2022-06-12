@@ -1,5 +1,7 @@
 <script>
   import {enhance} from "../lib/form"
+  import {refreshUser} from "../lib/refresh-user"
+
     let show_password = true
   $: type = show_password ? 'password' : 'text'
   let value = '';
@@ -8,7 +10,10 @@
 
   <h1>Login</h1>
   
-  <form action="/login" method="post" use:enhance={{redirect: "/"}}>
+  <form action="/api/auth/login" method="post" use:enhance={{
+    result: refreshUser,
+    redirect: "/"
+  }}>
   
       <label for="uname"><b>Username</b></label><br>
       <input type="text" id="uname" placeholder="Enter Username" size="30" name="uname" required><br><br>
