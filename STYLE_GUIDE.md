@@ -19,15 +19,15 @@ npm run format
 
 ## Name cases
 
-* Svelte Components (files in `/lib/components`) [PascalCase](https://chaseadams.io/posts/most-common-programming-case-types/#pascalcase)
-* Svelte Routes (files in `/lib/routes`) [kebab-case](https://chaseadams.io/posts/most-common-programming-case-types/#kebab-case)
-* Other JavaScript/Typescript files [kebab-case](https://chaseadams.io/posts/most-common-programming-case-types/#kebab-case)
-* JavaScript/TypeScript variables [camelCase](https://chaseadams.io/posts/most-common-programming-case-types/#camelcase)
-* JavaScript/TypeScript functions [camelCase](https://chaseadams.io/posts/most-common-programming-case-types/#camelcase)
-* JavaScript/TypeScript classes, types & interfaces [PascalCase](https://chaseadams.io/posts/most-common-programming-case-types/#pascalcase)
-* JavaScript/TypeScript enums [PascalCase](https://chaseadams.io/posts/most-common-programming-case-types/#pascalcase)
-* JavaScript/TypeScript enum members [UPPER_CASE_SNAKE_CASE](https://chaseadams.io/posts/most-common-programming-case-types/#upper_case_snake_case)
-* JavaScript/TypeScript constants [UPPER_CASE_SNAKE_CASE](https://chaseadams.io/posts/most-common-programming-case-types/#upper_case_snake_case)
+- Svelte Components (files in `/lib/components`) [PascalCase](https://chaseadams.io/posts/most-common-programming-case-types/#pascalcase)
+- Svelte Routes (files in `/lib/routes`) [kebab-case](https://chaseadams.io/posts/most-common-programming-case-types/#kebab-case)
+- Other JavaScript/Typescript files [kebab-case](https://chaseadams.io/posts/most-common-programming-case-types/#kebab-case)
+- JavaScript/TypeScript variables [camelCase](https://chaseadams.io/posts/most-common-programming-case-types/#camelcase)
+- JavaScript/TypeScript functions [camelCase](https://chaseadams.io/posts/most-common-programming-case-types/#camelcase)
+- JavaScript/TypeScript classes, types & interfaces [PascalCase](https://chaseadams.io/posts/most-common-programming-case-types/#pascalcase)
+- JavaScript/TypeScript enums [PascalCase](https://chaseadams.io/posts/most-common-programming-case-types/#pascalcase)
+- JavaScript/TypeScript enum members [UPPER_CASE_SNAKE_CASE](https://chaseadams.io/posts/most-common-programming-case-types/#upper_case_snake_case)
+- JavaScript/TypeScript constants [UPPER_CASE_SNAKE_CASE](https://chaseadams.io/posts/most-common-programming-case-types/#upper_case_snake_case)
 
 ## Do not abbreviate
 
