@@ -18,6 +18,7 @@
     <label for="regusername"><i>account_circle</i></label>
     <input
       id="regusername"
+      autocomplete="username"
       type="text"
       name="name"
       maxlength="30"
@@ -56,6 +57,7 @@
     <label for="regemail"><i>alternate_email</i></label>
     <input
       id="regemail"
+      autocomplete="username"
       type="email"
       name="email"
       maxlength="30"
@@ -67,7 +69,7 @@
 
   <PasswordInput
     id="regpassword"
-    type="password"
+    autocomplete="new-password"
     name="password"
     minlength="8"
     maxlength="30"
@@ -81,7 +83,7 @@
 
   <PasswordInput
     id="passwordConfirmation"
-    type="password"
+    autocomplete="new-password"
     name="passwordConfirmation"
     minlength="8"
     maxlength="30"
