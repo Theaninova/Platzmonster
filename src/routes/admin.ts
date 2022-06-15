@@ -14,6 +14,11 @@ export const post: RequestHandler = async ({request}) => {
 
   const user = await User.findByIdAndDelete(form.get("delete"))
 
+
+
+  await User.findByIdAndUpdate(form.get("edit"), {name: form.get("editName"), password: form.get("editPassword")})
+
+
   if (user) {
     return {
       headers: {location: "/admin"},

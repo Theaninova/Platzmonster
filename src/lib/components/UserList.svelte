@@ -33,17 +33,29 @@
             {password}
           </td>
 
-          <td> <button type="button" class="button"> <i>edit</i> </button> </td>
+          <td> <button type="submit" name="edit" class="button" value={_id}> <i>edit</i> </button> </td>
+
 
           <td>
-            <button type="submit" name="delete" class="button danger-button" value={_id}
-              ><i>delete_forever</i>
+            <button type="submit" name="delete" class="button danger-button" value={_id}>
+              <i>delete_forever</i>
             </button>
           </td>
         </tr>
       {/each}
     </table>
+    <h3>Edit</h3>
+    <table class="table text-white">
+
+      <th> <input type="text" id="editName" name="editName" placeholder="Username"> </th>
+      <th> <input type="password" id="editPassword" name="editPassword" placeholder="Password">   </th>
+    </table>
+
+
+
   </form>
+
+  <h3>---------------------</h3>
 
   <a href="/register" class="button" style="width: max-content"> Create New </a>
 </div>
