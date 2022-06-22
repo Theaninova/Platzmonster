@@ -54,6 +54,19 @@
   </div>
 
   <div class="input-group">
+    <label for="matrikelnummer"><i>pin</i></label>
+    <input
+      id="matrikelnummer"
+      type="number"
+      name="matrikelnummer"
+      maxlength="30"
+      size="30"
+      placeholder="Gebe deine Matrikelnummer an"
+      required
+    />
+  </div>
+
+  <div class="input-group">
     <label for="regemail"><i>alternate_email</i></label>
     <input
       id="regemail"

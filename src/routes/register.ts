@@ -7,7 +7,7 @@ export const post: RequestHandler = async ({request}) => {
 
   await new User({
     name: form.get("name") as string,
-    matrikelNumber: Math.floor(Math.random() * 1000000),
+    matrikelNumber: form.get("matrikelnummer") as string,
     userType: form.get("registerusertype") as string,
     password: await bcrypt.hash(form.get("password") as string, PASSWORD_SALT_ROUNDS),
   }).save()
