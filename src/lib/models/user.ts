@@ -45,7 +45,7 @@ const UserSchema = new mongoose.Schema({
   email: {
     required: true,
     type: String,
-  }
+  },
 })
 
 export const User = mongoose.model<IUser>("User", UserSchema)
