@@ -12,6 +12,9 @@ export interface IUser {
   matrikelNumber: number
   userType: UserType
   password: string
+  firstname: string
+  lastname: string
+  email: string
 }
 
 const UserSchema = new mongoose.Schema({
@@ -31,6 +34,18 @@ const UserSchema = new mongoose.Schema({
     required: true,
     type: String,
   },
+  firstname: {
+    required: true,
+    type: String,
+  },
+  lastname: {
+    required: true,
+    type: String,
+  },
+  email: {
+    required: true,
+    type: String,
+  }
 })
 
 export const User = mongoose.model<IUser>("User", UserSchema)
