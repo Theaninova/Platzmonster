@@ -14,15 +14,30 @@
         <tr>
           <th scope="col" class="text-break d-none d-sm-table-cell">ID</th>
           <th scope="col" class="text-break d-none d-sm-table-cell" width="100">Username</th>
+          <th scope="col" class="text-break d-table-cell d-sm-none">Vorname </th>
+          <th scope="col" class="text-break d-table-cell d-sm-none">Nachname </th>
+          <th scope="col" class="text-break d-table-cell d-sm-none">E-Mail </th>
           <th scope="col" class="text-break d-table-cell d-sm-none" width="100">Mtr-Nr.</th>
           <th scope="col" class="text-break d-table-cell d-sm-none">Password </th>
         </tr>
       </thead>
-      {#each users as { name, matrikelNumber, _id, password }, index}
+      {#each users as { name, firstname, lastname, email, matrikelNumber, _id, password }, index}
         <tr>
           <th class="break-off">{_id}</th>
           <td>
             {name}
+          </td>
+
+          <td>
+            {firstname}
+          </td>
+
+          <td>
+            {lastname}
+          </td>
+
+          <td>
+            {email}
           </td>
 
           <td>
@@ -34,6 +49,8 @@
           </td>
 
           <td> <button type="submit" name="edit" class="button" value={_id}> <i>edit</i> </button> </td>
+          <td> <a value="" href="/edituser/${matrikelNumber}"> Edit </a> </td>
+
 
 
           <td>
@@ -46,15 +63,11 @@
     </table>
     <h3>Edit</h3>
     <table class="table text-white">
-
-      <th> <input type="text" id="editName" name="editName" placeholder="Username"> </th>
-      <th> <input type="password" id="editPassword" name="editPassword" placeholder="Password">   </th>
+      <th> <input type="text" id="editName" name="editName" placeholder="Username" /> </th>
+      <th> <input type="password" id="editPassword" name="editPassword" placeholder="Password" /> </th>
     </table>
-
-
-
   </form>
-    <!-- Edit Fehler dass das andere Attribut gelöscht wird muss noch angepasst werden-->  
+  <!-- Edit Fehler dass das andere Attribut gelöscht wird muss noch angepasst werden-->
   <h3>---------------------</h3>
 
   <a href="/register" class="button" style="width: max-content"> Create New </a>
