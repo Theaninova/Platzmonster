@@ -13,7 +13,7 @@ export const handle: Handle = async ({event, resolve}) => {
   const cookies = parse(event.request.headers.get("cookie") || "")
   if (cookies[SESSION_COOKIE_NAME]) {
     event.locals.sessionId = cookies[SESSION_COOKIE_NAME]
-    const session = await Session.findById(cookies[SESSION_COOKIE_NAME])
+    const session = await Session.findOne({sessionId: cookies[SESSION_COOKIE_NAME]})
 
     if (session) {
       event.locals.user = await User.findById(session.userId)

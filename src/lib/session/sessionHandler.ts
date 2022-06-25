@@ -12,9 +12,9 @@ export async function logIn(username: string, password: string): Promise<string 
   const user = await User.findOne({name: username})
   if (!user || !(await bcrypt.compare(password, user.password))) return
 
-  const session = await new Session({userId: user._id}).save()
+  const session = await new Session({userId: user._id, sessionId: crypto.randomUUID()}).save()
 
-  return serialize(SESSION_COOKIE_NAME, session._id.toString(), {
+  return serialize(SESSION_COOKIE_NAME, session.sessionId, {
     path: "/",
     httpOnly: true,
     sameSite: "strict",
@@ -24,7 +24,7 @@ export async function logIn(username: string, password: string): Promise<string 
 }
 
 export async function logOut(sessionId?: string): Promise<string> {
-  await Session.findByIdAndDelete(sessionId)
+  await Session.findOneAndDelete({sessionId})
 
   return serialize(SESSION_COOKIE_NAME, "", {
     path: "/",

@@ -33,10 +33,13 @@ export async function insertUsers(count: number, userType = UserType.USER): Prom
   await User.insertMany(
     await Promise.all(
       accounts.map(
-        async ({username, matrikelNumber, password}) =>
+        async ({username, matrikelNumber, password, firstName, lastName, email}) =>
           new User({
             name: username,
             matrikelNumber: matrikelNumber,
+            firstname: firstName,
+            lastname: lastName,
+            email,
             userType,
             password: await bcrypt.hash(password, PASSWORD_SALT_ROUNDS),
           }),

@@ -48,4 +48,21 @@ const UserSchema = new mongoose.Schema({
   },
 })
 
+UserSchema.index(
+  {
+    name: "text",
+    firstname: "text",
+    lastname: "text",
+    email: "text",
+  },
+  {
+    weights: {
+      name: 5,
+      firstname: 3,
+      lastname: 4,
+      email: 2,
+    },
+  },
+)
+
 export const User = mongoose.model<IUser>("User", UserSchema)
