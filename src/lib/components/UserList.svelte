@@ -51,8 +51,6 @@
           <td> <button type="submit" name="edit" class="button" value={_id}> <i>edit</i> </button> </td>
           <td> <a value="" href="/edituser/${matrikelNumber}"> Edit </a> </td>
 
-
-
           <td>
             <button type="submit" name="delete" class="button danger-button" value={_id}>
               <i>delete_forever</i>

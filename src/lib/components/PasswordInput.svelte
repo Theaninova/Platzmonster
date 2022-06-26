@@ -1,5 +1,5 @@
 <script>
-  import {validateMatch} from "../../routes/register"
+  import {validateMatch} from "../validate-match"
   let showPassword = false
   $: type = showPassword ? "text" : "password"
   $: icon = showPassword ? "visibility" : "visibility_off"
