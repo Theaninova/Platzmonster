@@ -76,12 +76,13 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-items: center;
+    gap: 4px;
   }
 
   .card {
     background: white;
     color: black;
-    width: calc(100% - 64px);
+    width: calc(100% - 56px);
 
     padding: 16px;
   }
