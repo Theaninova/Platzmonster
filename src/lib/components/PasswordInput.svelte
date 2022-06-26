@@ -1,4 +1,5 @@
 <script>
+  import {validateMatch} from '../../routes/register'
   let showPassword = false
   $: type = showPassword ? "text" : "password"
   $: icon = showPassword ? "visibility" : "visibility_off"
@@ -6,7 +7,8 @@
 
 <div class="input-group">
   <slot />
-  <input {type} {...$$props} />
+  <input {type} {...$$props} use:validateMatch={'regpassword'}/>
+
   <div class="icon-24 password-toggle" on:click={() => (showPassword = !showPassword)}>
     {icon}
   </div>
