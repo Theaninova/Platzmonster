@@ -14,11 +14,11 @@
         <tr>
           <th scope="col" class="text-break d-none d-sm-table-cell">ID</th>
           <th scope="col" class="text-break d-none d-sm-table-cell" width="100">Username</th>
-          <th scope="col" class="text-break d-table-cell d-sm-none">Vorname </th>
-          <th scope="col" class="text-break d-table-cell d-sm-none">Nachname </th>
-          <th scope="col" class="text-break d-table-cell d-sm-none">E-Mail </th>
+          <th scope="col" class="text-break d-table-cell d-sm-none">Vorname</th>
+          <th scope="col" class="text-break d-table-cell d-sm-none">Nachname</th>
+          <th scope="col" class="text-break d-table-cell d-sm-none">E-Mail</th>
           <th scope="col" class="text-break d-table-cell d-sm-none" width="100">Mtr-Nr.</th>
-          <th scope="col" class="text-break d-table-cell d-sm-none">Password </th>
+          <th scope="col" class="text-break d-table-cell d-sm-none">Password</th>
         </tr>
       </thead>
       {#each users as { name, firstname, lastname, email, matrikelNumber, _id, password }, index}
@@ -48,8 +48,7 @@
             {password}
           </td>
 
-          <td> <button type="submit" name="edit" class="button" value={_id}> <i>edit</i> </button> </td>
-          <td> <a value="" href="/edituser/${matrikelNumber}"> Edit </a> </td>
+          <td><a href="/edituser/{matrikelNumber}" class="button"> <i>edit</i> </a></td>
 
           <td>
             <button type="submit" name="delete" class="button danger-button" value={_id}>
@@ -59,14 +58,7 @@
         </tr>
       {/each}
     </table>
-    <h3>Edit</h3>
-    <table class="table text-white">
-      <th> <input type="text" id="editName" name="editName" placeholder="Username" /> </th>
-      <th> <input type="password" id="editPassword" name="editPassword" placeholder="Password" /> </th>
-    </table>
   </form>
-  <!-- Edit Fehler dass das andere Attribut gelöscht wird muss noch angepasst werden-->
-  <h3>---------------------</h3>
 
   <a href="/register" class="button" style="width: max-content"> Create New </a>
 </div>
