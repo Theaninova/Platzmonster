@@ -44,6 +44,9 @@ export function enhance(
     e.preventDefault()
 
     const data = new FormData(form)
+    if (e.submitter instanceof HTMLButtonElement) {
+      data.append(e.submitter.name, e.submitter.value)
+    }
 
     if (pending) pending({data, form})
 

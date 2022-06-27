@@ -85,6 +85,11 @@ button:active,
   transform: translate(-2px, -2px);
 }
 
+button[disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .danger-button:hover {
   background: $error-color;
   color: $on-error-color;

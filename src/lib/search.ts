@@ -1,8 +1,7 @@
-import type {RequestHandler} from "@sveltejs/kit"
-import {User} from "./models/user"
-
-export const formNames = {
+export const searchFormNames = {
   search: "search",
   page: "page",
   entriesPerPage: "entriesPerPage",
+  next: "next",
+  prev: "prev",
 }

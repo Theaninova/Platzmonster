@@ -1,26 +1,58 @@
 <script lang="ts">
-  import type {IUser} from "../../models/user"
-  import {formNames} from "../../search"
-  import UserListItem from "../types/list/UserListItem.svelte"
+  import type Component from "svelte/types/compiler/compile/Component"
+  import {enhance} from "../../form"
+  import {searchFormNames} from "../../search"
+  import type {SearchResult} from "../../../routes/api/search/user"
 
-  export let searchResult: Promise<IUser[]>
+  export let searchResult: Promise<SearchResult<any>> = undefined
+
+  export let listItem: Component
+  export let action: string
+  export let method = "post"
+
+  export let itemsPerPage = 10
+  export let page = 0
+  export let totalItems = 0
+
+  $: pages = Math.ceil(totalItems / itemsPerPage)
+  $: noPrev = page <= 0
+  $: noNext = page >= pages - 1
+
+  $: {
+    searchResult?.then(result => {
+      itemsPerPage = result.entriesPerPage
+      totalItems = result.count
+      page = result.page
+    })
+  }
 </script>
 
 <section class="card">
-  <div class="search-bar card">
-    <input type="search" placeholder="Search..." name={formNames.search} />
-    <input type="number" placeholder="10" name={formNames.entriesPerPage} />
-    <input type="number" placeholder="0" name={formNames.page} />
-    <button type="submit"><i>search</i></button>
-  </div>
+  <form
+    class="search-bar"
+    {action}
+    {method}
+    use:enhance={{result: ({response}) => (searchResult = response.json())}}
+  >
+    <input type="search" placeholder="Search..." name={searchFormNames.search} />
+    <button type="submit" name={searchFormNames.page} value={0}><i>search</i></button>
+    <input type="number" bind:value={itemsPerPage} name={searchFormNames.entriesPerPage} />
+    <button style="grid-row: 1" disabled={noPrev} name={searchFormNames.page} value={page - 1} type="submit"
+      ><i>navigate_before</i></button
+    >
+    <button disabled={noNext} type="submit" name={searchFormNames.page} value={page + 1}
+      ><i>navigate_next</i></button
+    >
+  </form>
 
   {#if searchResult}
     {#await searchResult}
       <p>Loading</p>
     {:then result}
-      {#each result as item}
+      <p>{result.count} results. Page {page + 1} / {pages}</p>
+      {#each result.results as item}
         <div class="search-result">
-          <UserListItem {item} />
+          <svelte:component this={listItem} {item} {...$$props} />
         </div>
       {/each}
     {/await}
@@ -31,6 +63,12 @@
 
 <style lang="scss">
   @import "../../styles/theme";
+
+  form {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto auto;
+    gap: 2px;
+  }
 
   .card {
     background: white;
@@ -57,5 +95,9 @@
 
   .search-result:only-of-type::after {
     display: none;
+  }
+
+  input[type="number"] {
+    width: 32px;
   }
 </style>

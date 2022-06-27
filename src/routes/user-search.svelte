@@ -1,16 +1,8 @@
 <script lang="ts">
   import SearchPage from "../lib/components/search/SearchPage.svelte"
-  import {enhance} from "../lib/form"
-
-  export let searchResult
+  import UserListItem from "../lib/components/types/list/UserListItem.svelte"
 </script>
 
 <h1>User Search</h1>
 
-<form
-  action="/user-search"
-  method="post"
-  use:enhance={{result: ({response}) => (searchResult = response.json().then(it => it.searchResult))}}
->
-  <SearchPage {searchResult} />
-</form>
+<SearchPage action="/api/search/user" listItem={UserListItem} />
