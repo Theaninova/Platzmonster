@@ -14,7 +14,6 @@ export const post: RequestHandler<Record<string, string>, SearchResult<IUser>> =
   const form = await request.formData()
   const query = (form.get(searchFormNames.search) as string) || ""
   const page = Number.parseInt(form.get(searchFormNames.page) as string) || 0
-  console.log(form.has(searchFormNames.next))
   const entriesPerPage = Number.parseInt(form.get(searchFormNames.entriesPerPage) as string) || 20
 
   const action = query === "*" ? {} : {$text: {$search: query}}

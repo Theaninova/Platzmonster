@@ -65,7 +65,7 @@ button,
   border-radius: $button-border-radius;
   align-items: center;
 
-  box-shadow: 2px 2px 0 black;
+  box-shadow: $button-box-shadow;
 
   text-transform: uppercase;
   font-style: unset;

@@ -10,7 +10,7 @@
   export let action: string
   export let method = "post"
 
-  export let itemsPerPage = 10
+  export let itemsPerPage = 2
   export let page = 0
   export let totalItems = 0
 
@@ -28,15 +28,15 @@
 </script>
 
 <section class="card">
-  <form
-    class="search-bar"
-    {action}
-    {method}
-    use:enhance={{result: ({response}) => (searchResult = response.json())}}
-  >
+  <form {action} {method} use:enhance={{result: ({response}) => (searchResult = response.json())}}>
     <input type="search" placeholder="Search..." name={searchFormNames.search} />
-    <button type="submit" name={searchFormNames.page} value={0}><i>search</i></button>
-    <input type="number" bind:value={itemsPerPage} name={searchFormNames.entriesPerPage} />
+    <button type="submit" class="search-button" name={searchFormNames.page} value={0}><i>search</i></button>
+    <input
+      style="display: none"
+      type="number"
+      bind:value={itemsPerPage}
+      name={searchFormNames.entriesPerPage}
+    />
     <button style="grid-row: 1" disabled={noPrev} name={searchFormNames.page} value={page - 1} type="submit"
       ><i>navigate_before</i></button
     >
@@ -45,43 +45,58 @@
     >
   </form>
 
-  {#if searchResult}
-    {#await searchResult}
-      <p>Loading</p>
-    {:then result}
-      <p>{result.count} results. Page {page + 1} / {pages}</p>
-      {#each result.results as item}
-        <div class="search-result">
-          <svelte:component this={listItem} {item} {...$$props} />
-        </div>
-      {/each}
-    {/await}
-  {:else}
-    <p>No results</p>
-  {/if}
+  <div class="search-results">
+    {#if searchResult}
+      {#await searchResult}
+        <p>Loading</p>
+      {:then result}
+        <p>{result.count} results. Page {page + 1} / {pages}</p>
+        {#each result.results as item}
+          <div class="search-result">
+            <svelte:component this={listItem} {item} {...$$props} />
+          </div>
+        {/each}
+      {/await}
+    {:else}
+      <p>No results</p>
+    {/if}
+  </div>
 </section>
 
 <style lang="scss">
   @import "../../styles/theme";
 
+  $gap: 6px;
+
   form {
+    position: sticky;
+    top: 16px;
+
     display: grid;
-    grid-template-columns: auto 1fr auto auto auto;
-    gap: 2px;
+    grid-template-columns: auto 1fr auto auto;
+    gap: $gap;
+
+    background: white;
+    z-index: 1000;
+
+    border-bottom: $card-border;
   }
 
   .card {
     background: white;
-    padding: 10px;
+    padding: 0;
+    max-width: 24cm;
+    margin-inline: auto;
+
+    contain: content;
+
+    > * {
+      padding: 10px;
+    }
   }
 
-  .search-bar {
-    position: sticky;
-    top: 20px;
-  }
-
-  .results {
-    overflow-y: auto;
+  .search-results {
+    padding-top: 0;
   }
 
   .search-result:not(:last-of-type)::after {
@@ -95,6 +110,24 @@
 
   .search-result:only-of-type::after {
     display: none;
+  }
+
+  input[type="search"] {
+    border: $card-border;
+    border-radius: $button-border-radius 0 0 $button-border-radius;
+    box-shadow: $button-box-shadow;
+    margin-right: calc(#{-$gap} - 2px);
+    text-indent: 8px;
+    font-size: 0.9rem;
+  }
+
+  input[type="search"]:focus {
+    outline: none;
+    background: #e7e7e7;
+  }
+
+  .search-button {
+    border-radius: 0 $button-border-radius $button-border-radius 0;
   }
 
   input[type="number"] {

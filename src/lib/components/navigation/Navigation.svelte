@@ -45,6 +45,8 @@
 
     grid-column: 1;
     grid-row: 1;
+
+    z-index: 1000;
   }
 
   ul {
