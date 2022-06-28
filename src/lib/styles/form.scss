@@ -54,8 +54,8 @@ button[disabled] {
 }
 
 .danger-button:hover {
-  background: $error-color;
-  color: $on-error-color;
+  background: $danger-color;
+  color: $on-danger-color;
 }
 
 fieldset,
@@ -92,12 +92,12 @@ fieldset,
   }
 
   > input:invalid:not(:focus):not(:placeholder-shown) {
-    color: red;
-    background: #ffe5e5;
+    color: $error-color;
+    background: lighten($error-color, 45%);
   }
 
   > input:invalid:focus:not(:placeholder-shown) {
-    color: red;
+    color: $error-color;
   }
 
   > input:focus {
