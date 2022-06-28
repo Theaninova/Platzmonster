@@ -1,5 +1,9 @@
 @import "theme.scss";
 
+@import "form";
+@import "card";
+@import "icon";
+
 h1 {
   font-size: clamp(3rem, -4rem + 22.8571vw, 6rem);
   margin-block: 1rem;
@@ -12,131 +16,4 @@ h1 {
 h2 {
   margin-block: 0.5rem;
   color: black;
-}
-
-i,
-.icon-18 {
-  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 18;
-  font-family: "Material Symbols Rounded";
-  font-size: 18px;
-  font-style: inherit;
-}
-
-label > i,
-.icon-24 {
-  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
-  font-family: "Material Symbols Rounded";
-  font-size: 24px;
-  font-style: inherit;
-}
-
-.input-group,
-.card,
-button,
-.button {
-  border: $card-border;
-
-  color: black;
-}
-
-.card {
-  border-radius: $card-border-radius;
-  box-shadow: $card-shadow;
-  padding-inline: 8px;
-  padding-block: 2px;
-  margin-right: 4px;
-  margin-bottom: 4px;
-}
-
-.input-group,
-button,
-.button {
-  appearance: unset;
-
-  display: flex;
-  cursor: pointer;
-  padding: 18px 4px;
-  margin: 0 2px 0 0;
-  gap: 6px;
-
-  height: 36px;
-
-  box-sizing: border-box;
-  border-radius: $button-border-radius;
-  align-items: center;
-
-  box-shadow: $button-box-shadow;
-
-  text-transform: uppercase;
-  font-style: unset;
-  font-family: inherit;
-  font-weight: bold;
-  font-size: 16px;
-  text-decoration: none;
-
-  transition: all $card-transition-duration ease-in-out;
-}
-
-button:hover,
-button:active,
-.button:hover,
-.button:active {
-  box-shadow: 4px 4px 0 black;
-  transform: translate(-2px, -2px);
-}
-
-button[disabled] {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.danger-button:hover {
-  background: $error-color;
-  color: $on-error-color;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  cursor: unset;
-  height: 48px;
-  gap: 0;
-  padding: 0;
-  overflow: hidden;
-
-  margin-block: 2px;
-
-  > input {
-    all: unset;
-    height: 100%;
-    margin: 0;
-    padding-inline: 8px;
-
-    border-left: $card-border;
-    width: 0;
-    min-width: 100%;
-
-    text-transform: none;
-  }
-
-  > input[type="password"] {
-    -webkit-text-security: none !important;
-  }
-
-  > label {
-    padding-inline: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-
-    background: black;
-    color: white;
-  }
-}
-
-.input-group > input:focus {
-  background: $accent-color;
 }

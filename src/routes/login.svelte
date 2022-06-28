@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
   import {enhance} from "../lib/form"
   import {refreshUser} from "../lib/refresh-user"
   import PasswordInput from "../lib/components/PasswordInput.svelte"
+
+  let usernameField: HTMLInputElement
 </script>
 
 <h1>Login</h1>
@@ -13,29 +15,25 @@
   use:enhance={{
     result: refreshUser,
     redirect: "/",
+    error: async ({response}) => {
+      usernameField.setCustomValidity(await response.text())
+    },
   }}
 >
   <div class="input-group" style="grid-column: span 2">
     <label for="uname"><i>account_circle</i></label>
     <input
+      bind:this={usernameField}
       autocomplete="username"
       type="text"
       id="uname"
       placeholder="Username"
-      size="30"
       name="uname"
       required
     />
   </div>
 
-  <PasswordInput
-    autocomplete="current-password"
-    id="psw"
-    placeholder="Password"
-    size="30"
-    name="psw"
-    required
-  >
+  <PasswordInput autocomplete="current-password" id="psw" placeholder="Password" name="psw" required>
     <!--suppress XmlInvalidId -->
     <label for="psw"><i>password</i></label>
   </PasswordInput>

@@ -5,6 +5,7 @@ export const post: RequestHandler = async ({request, locals}) => {
   if (locals.user?.userType !== UserType.ADMIN) {
     return {
       status: 401,
+      body: "Unauthorized",
     }
   }
 

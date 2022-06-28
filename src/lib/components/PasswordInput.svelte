@@ -5,20 +5,16 @@
   $: icon = showPassword ? "visibility" : "visibility_off"
 </script>
 
-<div class="input-group">
+<fieldset>
   <slot />
   <input {type} {...$$props} use:validateMatch={"regpassword"} />
 
   <div class="icon-24 password-toggle" on:click={() => (showPassword = !showPassword)}>
     {icon}
   </div>
-</div>
+</fieldset>
 
 <style>
-  .input-group {
-    position: relative;
-  }
-
   .password-toggle {
     position: absolute;
     right: 0;

@@ -1,0 +1,106 @@
+@import "theme";
+
+fieldset,
+.input-group,
+.card,
+button,
+.button {
+  border: $card-border;
+
+  color: black;
+}
+
+fieldset,
+.input-group,
+button,
+.button {
+  appearance: unset;
+
+  display: flex;
+  cursor: pointer;
+  padding: 18px 4px;
+  margin: 0 2px 0 0;
+  gap: 6px;
+
+  height: 36px;
+
+  box-sizing: border-box;
+  border-radius: $button-border-radius;
+  align-items: center;
+
+  box-shadow: $button-box-shadow;
+
+  text-transform: uppercase;
+  font-style: unset;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+
+  transition: all $card-transition-duration ease-in-out;
+}
+
+button:hover,
+button:active,
+.button:hover,
+.button:active {
+  box-shadow: 4px 4px 0 black;
+  transform: translate(-2px, -2px);
+}
+
+button[disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.danger-button:hover {
+  background: $error-color;
+  color: $on-error-color;
+}
+
+fieldset,
+.input-group {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  cursor: unset;
+  height: 48px;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+
+  margin-block: 2px;
+
+  > input {
+    all: unset;
+    height: 100%;
+    min-width: 50px;
+    margin: 0;
+    padding-inline: 8px;
+
+    border-left: $card-border;
+
+    text-transform: none;
+  }
+
+  > label {
+    padding-inline: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  > input:invalid:not(:focus):not(:placeholder-shown) {
+    color: red;
+    background: #ffe5e5;
+  }
+
+  > input:invalid:focus:not(:placeholder-shown) {
+    color: red;
+  }
+
+  > input:focus {
+    background: $focus-color;
+  }
+}

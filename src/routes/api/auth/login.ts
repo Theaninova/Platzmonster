@@ -1,7 +1,5 @@
 import type {RequestHandler} from "@sveltejs/kit"
 import {logIn} from "../../../lib/session/sessionHandler"
-import {MOCK_ADMIN} from "../../../lib/models/mock/admin"
-import {User} from "$lib/models/user"
 
 export const post: RequestHandler = async ({request}) => {
   const form = await request.formData()
@@ -18,5 +16,6 @@ export const post: RequestHandler = async ({request}) => {
       }
     : {
         status: 401,
+        body: "Falscher Nutzername/Passwort",
       }
 }

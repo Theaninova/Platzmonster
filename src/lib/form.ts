@@ -70,13 +70,12 @@ export function enhance(
           const url = new URL(form.action)
           url.pathname = redirect || url.pathname
           url.search = url.hash = ""
-          console.log(url.href)
           await goto(redirect)
         }
       } else if (error) {
         error({data, form, error: null, response})
       } else {
-        console.error(await response.text())
+        alert(await response.text())
       }
     } catch (e: unknown) {
       if (error && e instanceof Error) {

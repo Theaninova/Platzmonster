@@ -1,0 +1,10 @@
+@import "theme";
+
+.card {
+  border-radius: $card-border-radius;
+  box-shadow: $card-shadow;
+  padding-inline: 8px;
+  padding-block: 2px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}

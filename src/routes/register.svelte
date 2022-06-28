@@ -6,15 +6,15 @@
 <h1>Register</h1>
 
 <form method="post" action="/register" use:enhance={{redirect: "/"}} class="card">
-  <div class="input-group">
+  <fieldset>
     <label for="registerusertype"><i>badge</i>&nbsp;type</label>
     <select id="registerusertype" name="registerusertype" required>
       <option value="user">User</option>
       <option value="admin">Admin</option>
     </select>
-  </div>
+  </fieldset>
 
-  <div class="input-group">
+  <fieldset>
     <label for="regusername"><i>account_circle</i></label>
     <input
       id="regusername"
@@ -26,9 +26,9 @@
       placeholder="Wähle einen Usernamen aus"
       required
     />
-  </div>
+  </fieldset>
 
-  <div class="input-group">
+  <fieldset>
     <label for="regvorname">Vorname</label>
     <input
       id="regvorname"
@@ -39,9 +39,9 @@
       placeholder="Gebe deinen Vornamen ein"
       required
     />
-  </div>
+  </fieldset>
 
-  <div class="input-group">
+  <fieldset>
     <label for="regnachname">Nachname</label>
     <input
       type="text"
@@ -51,9 +51,9 @@
       size="30"
       placeholder="Gebe deinen Nachnamen ein"
     />
-  </div>
+  </fieldset>
 
-  <div class="input-group">
+  <fieldset>
     <label for="matrikelnummer"><i>pin</i></label>
     <input
       id="matrikelnummer"
@@ -64,9 +64,9 @@
       placeholder="Gebe deine Matrikelnummer an"
       required
     />
-  </div>
+  </fieldset>
 
-  <div class="input-group">
+  <fieldset>
     <label for="regemail"><i>alternate_email</i></label>
     <input
       id="regemail"
@@ -78,7 +78,7 @@
       placeholder="Gebe deine E-Mail-Adresse an"
       required
     />
-  </div>
+  </fieldset>
 
   <PasswordInput
     id="regpassword"
@@ -128,14 +128,5 @@
 
     display: grid;
     gap: 4px;
-  }
-
-  input:invalid {
-    box-shadow: 0 0 5px 1px red;
-  }
-
-  input:valid {
-    content: "✓";
-    background-color: powderblue;
   }
 </style>

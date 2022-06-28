@@ -143,7 +143,7 @@
 
   input[type="search"]:focus {
     outline: none;
-    background: #e7e7e7;
+    background: $focus-color;
   }
 
   .search-button {
