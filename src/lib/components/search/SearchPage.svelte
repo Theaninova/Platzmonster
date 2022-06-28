@@ -58,7 +58,7 @@
         <p>{result.count} results. Page {page + 1} / {pages}</p>
         {#each result.results as item (item._id)}
           <div class="search-result">
-            <svelte:component this={listItem} {item} {...$$props} />
+            <svelte:component this={listItem} {item} {...$$restProps} />
             {#if action}
               <div class="actions">
                 <svelte:component this={actionButtons} {item} on:refresh={() => searchButton.click()} />

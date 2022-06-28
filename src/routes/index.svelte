@@ -3,7 +3,7 @@
   import {enhance} from "../lib/form"
   import {refreshUser} from "../lib/refresh-user"
 
-  export let user: IUser
+  export let user: IUser = undefined
 </script>
 
 <h1>Platzmonster</h1>
