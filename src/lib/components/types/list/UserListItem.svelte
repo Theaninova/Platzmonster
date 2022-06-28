@@ -19,8 +19,6 @@
   </h3>
   <p class="subtitle">{item.firstname} {item.lastname}</p>
   <p>{item.matrikelNumber}, {item.email}</p>
-
-  <button>Add Friend<i>person_add</i></button>
 </div>
 
 <style lang="scss">
@@ -30,16 +28,6 @@
 
   p {
     margin-block: 4px;
-  }
-
-  div {
-    position: relative;
-  }
-
-  button {
-    position: absolute;
-    right: 20px;
-    top: 2px;
   }
 
   abbr {

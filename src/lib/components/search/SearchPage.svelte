@@ -6,6 +6,7 @@
 
   export let searchResult: Promise<SearchResult<any>> = undefined
 
+  export let actionButtons: Component = undefined
   export let listItem: Component
   export let action: string
   export let method = "post"
@@ -25,12 +26,16 @@
       page = result.page
     })
   }
+
+  let searchButton: HTMLButtonElement
 </script>
 
 <section class="card">
   <form {action} {method} use:enhance={{result: ({response}) => (searchResult = response.json())}}>
     <input type="search" placeholder="Search..." name={searchFormNames.search} />
-    <button type="submit" class="search-button" name={searchFormNames.page} value={0}><i>search</i></button>
+    <button bind:this={searchButton} type="submit" class="search-button" name={searchFormNames.page} value={0}
+      ><i>search</i></button
+    >
     <input
       style="display: none"
       type="number"
@@ -51,9 +56,14 @@
         <p>Loading</p>
       {:then result}
         <p>{result.count} results. Page {page + 1} / {pages}</p>
-        {#each result.results as item}
+        {#each result.results as item (item._id)}
           <div class="search-result">
             <svelte:component this={listItem} {item} {...$$props} />
+            {#if action}
+              <div class="actions">
+                <svelte:component this={actionButtons} {item} on:refresh={() => searchButton.click()} />
+              </div>
+            {/if}
           </div>
         {/each}
       {/await}
@@ -67,6 +77,16 @@
   @import "../../styles/theme";
 
   $gap: 6px;
+
+  .search-result {
+    position: relative;
+  }
+
+  .actions {
+    position: absolute;
+    right: 20px;
+    top: 2px;
+  }
 
   form {
     position: sticky;
