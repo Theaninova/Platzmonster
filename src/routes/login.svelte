@@ -2,6 +2,7 @@
   import {enhance} from "../lib/form"
   import {refreshUser} from "../lib/refresh-user"
   import PasswordInput from "../lib/components/PasswordInput.svelte"
+  import {loginFormNames} from "../lib/models/form-names/login.js"
 
   let usernameField: HTMLInputElement
 </script>
@@ -20,7 +21,7 @@
     },
   }}
 >
-  <div class="input-group" style="grid-column: span 2">
+  <fieldset style="grid-column: span 2">
     <label for="uname"><i>account_circle</i></label>
     <input
       bind:this={usernameField}
@@ -28,12 +29,18 @@
       type="text"
       id="uname"
       placeholder="Username"
-      name="uname"
+      name={loginFormNames.username}
       required
     />
-  </div>
+  </fieldset>
 
-  <PasswordInput autocomplete="current-password" id="psw" placeholder="Password" name="psw" required>
+  <PasswordInput
+    autocomplete="current-password"
+    id="psw"
+    placeholder="Password"
+    name={loginFormNames.password}
+    required
+  >
     <!--suppress XmlInvalidId -->
     <label for="psw"><i>password</i></label>
   </PasswordInput>

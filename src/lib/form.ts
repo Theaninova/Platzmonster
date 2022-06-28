@@ -62,7 +62,7 @@ export function enhance(
       if (token !== current_token) return
 
       if (response.ok) {
-        if (result) result({data, form, response})
+        if (result) await result({data, form, response})
 
         if (!redirect) {
           await invalidate(() => true)

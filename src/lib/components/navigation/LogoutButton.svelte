@@ -6,6 +6,7 @@
 <form
   use:enhance={{
     result: refreshUser,
+    redirect: "/",
   }}
   method="post"
   action="/api/auth/logout"

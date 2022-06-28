@@ -6,7 +6,7 @@
 </script>
 
 <li>
-  <a class:activeRoute={$page.routeId?.includes(href)} class="button" href="/{href}"
+  <a class:activeRoute={$page.url.pathname?.startsWith(`/${href}`)} class="button" href="/{href}"
     ><slot />{#if icon}<span class="icon-18">{icon}</span>{/if}</a
   >
 </li>

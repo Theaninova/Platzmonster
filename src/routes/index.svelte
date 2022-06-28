@@ -15,26 +15,6 @@
     <button type="submit" name="insert">Insert Dummy Data</button>
   </form>
 
-  <form
-    use:enhance={{
-      result: refreshUser,
-    }}
-    method="post"
-    action="/api/auth/login"
-  >
-    <button type="submit" name="logIn">Login<span class="icon-18">login</span></button>
-  </form>
-
-  <form
-    use:enhance={{
-      result: refreshUser,
-    }}
-    method="post"
-    action="/api/auth/logout"
-  >
-    <button type="submit" name="logOut">Logout<span class="icon-18">logout</span></button>
-  </form>
-
   {#if user}
     <p>You are <span style="text-transform: uppercase">{user.userType}</span></p>
   {/if}

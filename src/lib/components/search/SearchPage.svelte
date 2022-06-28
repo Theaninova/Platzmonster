@@ -1,7 +1,7 @@
 <script lang="ts">
   import type Component from "svelte/types/compiler/compile/Component"
   import {enhance} from "../../form"
-  import {searchFormNames} from "../../search"
+  import {searchFormNames} from "../../models/form-names/search"
   import type {SearchResult} from "../../../routes/api/search/user"
 
   export let searchResult: Promise<SearchResult<any>> = undefined

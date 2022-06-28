@@ -1,7 +1,7 @@
 import type {RequestHandler} from "@sveltejs/kit"
 import {User, UserType} from "../../../lib/models/user"
 import type {IUser} from "../../../lib/models/user"
-import {searchFormNames} from "../../../lib/search"
+import {searchFormNames} from "../../../lib/models/form-names/search"
 
 export interface SearchResult<T> {
   results: T[]

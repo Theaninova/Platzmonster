@@ -1,14 +1,16 @@
 <script>
   import {enhance} from "../lib/form"
   import PasswordInput from "../lib/components/PasswordInput.svelte"
+  import {refreshUser} from "../lib/refresh-user"
+  import {registerFormNames} from "../lib/models/form-names/register"
 </script>
 
 <h1>Register</h1>
 
-<form method="post" action="/register" use:enhance={{redirect: "/"}} class="card">
+<form method="post" action="/register" use:enhance={{redirect: "/", result: refreshUser}} class="card">
   <fieldset>
     <label for="registerusertype"><i>badge</i>&nbsp;type</label>
-    <select id="registerusertype" name="registerusertype" required>
+    <select id="registerusertype" name={registerFormNames.userType} required>
       <option value="user">User</option>
       <option value="admin">Admin</option>
     </select>
@@ -20,7 +22,7 @@
       id="regusername"
       autocomplete="username"
       type="text"
-      name="name"
+      name={registerFormNames.name}
       maxlength="30"
       size="30"
       placeholder="Wähle einen Usernamen aus"
@@ -33,7 +35,7 @@
     <input
       id="regvorname"
       type="text"
-      name="vorname"
+      name={registerFormNames.firstName}
       maxlength="30"
       size="30"
       placeholder="Gebe deinen Vornamen ein"
@@ -46,7 +48,7 @@
     <input
       type="text"
       id="regnachname"
-      name="nachname"
+      name={registerFormNames.lastName}
       maxlength="30"
       size="30"
       placeholder="Gebe deinen Nachnamen ein"
@@ -58,7 +60,7 @@
     <input
       id="matrikelnummer"
       type="number"
-      name="matrikelnummer"
+      name={registerFormNames.matrikelNumber}
       maxlength="30"
       size="30"
       placeholder="Gebe deine Matrikelnummer an"
@@ -72,7 +74,7 @@
       id="regemail"
       autocomplete="username"
       type="email"
-      name="email"
+      name={registerFormNames.email}
       maxlength="30"
       size="30"
       placeholder="Gebe deine E-Mail-Adresse an"
@@ -83,7 +85,7 @@
   <PasswordInput
     id="regpassword"
     autocomplete="new-password"
-    name="password"
+    name={registerFormNames.password}
     minlength="8"
     maxlength="30"
     size="30"
@@ -97,7 +99,7 @@
   <PasswordInput
     id="passwordConfirmation"
     autocomplete="new-password"
-    name="passwordConfirmation"
+    name={registerFormNames.passwordConfirmation}
     minlength="8"
     maxlength="30"
     size="30"
