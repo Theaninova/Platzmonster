@@ -100,6 +100,7 @@
     id="passwordConfirmation"
     autocomplete="new-password"
     name={registerFormNames.passwordConfirmation}
+    validationField="regpassword"
     minlength="8"
     maxlength="30"
     size="30"

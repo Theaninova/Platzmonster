@@ -1,13 +1,21 @@
-<script>
+<script lang="ts">
   import {validateMatch} from "../validate-match"
+
+  export let validationField: string = undefined
+
   let showPassword = false
+
   $: type = showPassword ? "text" : "password"
   $: icon = showPassword ? "visibility" : "visibility_off"
 </script>
 
 <fieldset>
   <slot />
-  <input {type} {...$$props} use:validateMatch={"regpassword"} />
+  {#if validationField}
+    <input {type} {...$$props} use:validateMatch={validationField} />
+  {:else}
+    <input {type} {...$$props} />
+  {/if}
 
   <div class="icon-24 password-toggle" on:click={() => (showPassword = !showPassword)}>
     {icon}

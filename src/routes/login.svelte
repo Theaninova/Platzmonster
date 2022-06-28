@@ -5,6 +5,7 @@
   import {loginFormNames} from "../lib/models/form-names/login.js"
 
   let usernameField: HTMLInputElement
+  let wiggle = undefined
 </script>
 
 <h1>Login</h1>
@@ -16,9 +17,7 @@
   use:enhance={{
     result: refreshUser,
     redirect: "/",
-    error: async ({response}) => {
-      usernameField.setCustomValidity(await response.text())
-    },
+    error: () => (wiggle = !wiggle),
   }}
 >
   <fieldset style="grid-column: span 2">
@@ -45,11 +44,32 @@
     <label for="psw"><i>password</i></label>
   </PasswordInput>
 
-  <button type="submit">Login</button>
+  {#key wiggle}
+    <button type="submit" class:wiggle={typeof wiggle !== "undefined"}>Login</button>
+  {/key}
   <p>Noch keinen Account? <a href="/register">Registrieren</a></p>
 </form>
 
-<style>
+<style lang="scss">
+  @import "../lib/styles/theme";
+  @import "../lib/styles/shake-horizontal";
+
+  @keyframes flash {
+    10% {
+      background: lighten($error-color, 45%);
+      color: $error-color;
+    }
+    50% {
+      background: lighten($error-color, 45%);
+      color: $error-color;
+    }
+  }
+
+  .wiggle {
+    animation: flash 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both,
+      shake-horizontal 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  }
+
   .card {
     width: max-content;
     background: white;
