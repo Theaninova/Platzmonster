@@ -7,7 +7,7 @@ export enum UserType {
   USER = "user",
 }
 
-export interface IUser {
+export interface IUserRaw {
   name: string
   matrikelNumber: number
   userType: UserType
@@ -15,6 +15,10 @@ export interface IUser {
   firstname: string
   lastname: string
   email: string
+}
+
+export interface IUser extends IUserRaw {
+  _id: string
 }
 
 const UserSchema = new mongoose.Schema({
@@ -65,4 +69,4 @@ UserSchema.index(
   },
 )
 
-export const User = mongoose.model<IUser>("User", UserSchema)
+export const User = mongoose.model<IUserRaw>("User", UserSchema)

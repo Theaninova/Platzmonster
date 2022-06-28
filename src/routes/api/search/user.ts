@@ -1,5 +1,5 @@
 import type {RequestHandler} from "@sveltejs/kit"
-import {User} from "../../../lib/models/user"
+import {User, UserType} from "../../../lib/models/user"
 import type {IUser} from "../../../lib/models/user"
 import {searchFormNames} from "../../../lib/search"
 
@@ -10,7 +10,10 @@ export interface SearchResult<T> {
   entriesPerPage: number
 }
 
-export const post: RequestHandler<Record<string, string>, SearchResult<IUser>> = async ({request}) => {
+export const post: RequestHandler<Record<string, string>, SearchResult<IUser>> = async ({
+  request,
+  locals,
+}) => {
   const form = await request.formData()
   const query = (form.get(searchFormNames.search) as string) || ""
   const page = Number.parseInt(form.get(searchFormNames.page) as string) || 0
@@ -19,7 +22,7 @@ export const post: RequestHandler<Record<string, string>, SearchResult<IUser>> =
   const action = query === "*" ? {} : {$text: {$search: query}}
 
   const count = await User.find(action).countDocuments()
-  const result = await User.find(action)
+  const result = await User.find(action, locals.user?.userType === UserType.ADMIN ? {} : {password: 0})
     .skip(page * entriesPerPage)
     .limit(entriesPerPage)
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type {IUser} from "../../lib/models/user"
+  import type {IUser} from "../../../lib/models/user"
 
   export let item: IUser
 </script>

@@ -17,7 +17,7 @@
     error: async ({response}) => alert(await response.text()),
   }}
 >
-  <a href="/edituser/{item.matrikelNumber}" class="button"> <i>edit</i> </a>
+  <a href="/user/{item._id}/edit" class="button"> <i>edit</i> </a>
 
   <button bind:this={deleteButton} type="submit" name="delete" class="danger-button" value={item._id}>
     <i>delete_forever</i>

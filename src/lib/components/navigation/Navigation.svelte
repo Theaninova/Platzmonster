@@ -16,8 +16,8 @@
       {#if $session.user.userType === UserType.ADMIN}
         <Route href="admin" icon="admin_panel_settings">Admin</Route>
       {/if}
-      <Route href="user-search" icon="group_add">Friends</Route>
-      <Route icon="account_circle">{$session.user.name}</Route>
+      <Route href="user/search" icon="group_add">Friends</Route>
+      <Route href="user/{$session.user._id}" icon="account_circle">{$session.user.name}</Route>
       <li><LogoutButton /></li>
     </ul>
   {:else}
