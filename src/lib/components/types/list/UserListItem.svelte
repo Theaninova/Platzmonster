@@ -15,7 +15,7 @@
     <abbr class="icon-24" title={userTypeTitles[item.userType]}
       >{item.userType === UserType.USER ? "account_circle" : "admin_panel_settings"}</abbr
     >
-    {item.name}
+    <a href="/user/{item._id}">{item.name}</a>
   </h3>
   <p class="subtitle">{item.firstname} {item.lastname}</p>
   <p>{item.matrikelNumber}, {item.email}</p>
@@ -39,5 +39,14 @@
     display: flex;
     align-items: center;
     gap: 4px;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover {
+    text-decoration: underline black;
   }
 </style>

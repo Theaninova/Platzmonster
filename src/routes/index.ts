@@ -12,7 +12,7 @@ export const get: RequestHandler = async ({locals}) => {
 
 export const post: RequestHandler = async () => {
   await clearDatabase()
-  await insertUsers(5)
+  await insertUsers(500)
   await insertAdmins(2)
 
   return {

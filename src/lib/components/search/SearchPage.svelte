@@ -11,7 +11,7 @@
   export let action: string
   export let method = "post"
 
-  export let itemsPerPage = 2
+  export let itemsPerPage = 20
   export let page = 0
   export let totalItems = 0
 
