@@ -34,3 +34,14 @@ Chrome:
 1. Go to chrome://flags/#unsafely-treat-insecure-origin-as-secure
 2. Add the urls you want to whitelist.
 3. Restart chrome
+
+Build the app and run the preview script:
+
+```bash
+npm run build
+npm run preview
+```
+
+This will open the dev server on port **6005**. This is because the
+service worker caches files and adds offline support, which can interfere
+with development **especially** when developing other sites in parallel.
