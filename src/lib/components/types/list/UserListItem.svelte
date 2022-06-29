@@ -6,8 +6,8 @@
   export let item: IUser
 
   const userTypeTitles = {
-    [UserType.ADMIN]: "This is an admin user.",
-    [UserType.USER]: "This is a regular user.",
+    [UserType.ADMIN]: "Administrator",
+    [UserType.USER]: "Nutzer",
   }
 </script>
 

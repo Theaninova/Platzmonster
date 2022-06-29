@@ -66,8 +66,8 @@
   }
 
   .wiggle {
-    animation: flash 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both,
-      shake-horizontal 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+    animation: flash 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) both,
+      shake-horizontal 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   }
 
   .card {

@@ -1,0 +1,54 @@
+{
+  "name": "Platzmonster",
+  "short_name": "Platzmonster",
+  "description": "Deine Pläne produktiv zu lernen werden davon gestört, dass du in der Bibliothek erstmal 30 Minuten nach einem freien Platz suchen musst? Wir das Platzmonster-Team haben uns es als Ziel gesetzt dem endgültig ein Ende zu setzen.",
+  "start_url": "/",
+  "theme_color": "#0763f7",
+  "background_color": "#0763f7",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "categories": ["education"],
+  "screenshots": [
+    {
+      "src": "/screenshots/narrow/about.png",
+      "type": "image/png",
+      "sizes": "828x1792",
+      "platform": "narrow",
+      "label": "About Page"
+    },
+    {
+      "src": "/screenshots/narrow/user_search.png",
+      "type": "image/png",
+      "sizes": "828x1792",
+      "platform": "narrow",
+      "label": "Add Friends"
+    },
+    {
+      "src": "/screenshots/narrow/login.png",
+      "type": "image/png",
+      "sizes": "828x1792",
+      "platform": "narrow",
+      "label": "Login"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

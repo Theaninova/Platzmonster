@@ -24,3 +24,13 @@ npm run build
 ```
 
 You can preview the production build with `npm run preview`.
+
+## PWA
+
+In order to test the PWA, follow this guide:
+
+Chrome:
+
+1. Go to chrome://flags/#unsafely-treat-insecure-origin-as-secure
+2. Add the urls you want to whitelist.
+3. Restart chrome
