@@ -5,7 +5,22 @@ import {SESSION_COOKIE_NAME} from "./lib/session/sessionHandler"
 import {Session} from "./lib/models/session"
 import {User} from "./lib/models/user"
 
-const connection = mongoose.connect(`mongodb://localhost:27017/${process.env.DATABASE || "platzmoster"}`)
+const dbConfig = {
+  atlasUrl: import.meta.env.VITE_MONGO_ATLAS,
+  atlasUser: import.meta.env.VITE_MONGO_ATLAS_USER,
+  atlasPassword: import.meta.env.VITE_MONGO_ATLAS_PASSWORD,
+  database: import.meta.env.VITE_DATABASE || "platzmonster",
+}
+
+const connection = (async () => {
+  if (dbConfig.atlasUrl) {
+    return mongoose.connect(
+      `mongodb+srv://${dbConfig.atlasUser}:${dbConfig.atlasPassword}@${dbConfig.atlasUrl}/${dbConfig.database}`,
+    )
+  } else {
+    return mongoose.connect(`mongodb://localhost:27017/${dbConfig.database}`)
+  }
+})()
 
 export const handle: Handle = async ({event, resolve}) => {
   await connection
