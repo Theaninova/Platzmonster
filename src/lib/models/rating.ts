@@ -4,6 +4,7 @@ export interface IRatingRaw {
   userId: string
   associatedId: string
   rating: number // 0..5 float
+  category: string
   medal?: boolean
 }
 
@@ -23,6 +24,10 @@ const RatingSchema = new mongoose.Schema({
   rating: {
     required: true,
     type: Number,
+  },
+  category: {
+    required: true,
+    type: String,
   },
   medal: {
     type: Boolean,
