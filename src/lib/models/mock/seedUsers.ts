@@ -1,6 +1,6 @@
 import {PASSWORD_SALT_ROUNDS, User, UserType} from "../user"
 import bcrypt from "bcrypt"
-import mockUsers from "./MOCK_DATA.json"
+import mockUsers from "./MOCK_USERS.json"
 import {MOCK_ADMIN} from "./admin"
 
 export type AccountInfo = typeof MOCK_ADMIN

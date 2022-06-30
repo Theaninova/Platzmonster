@@ -12,7 +12,8 @@
   <h2 style="grid-column: span 2;">Debug Control</h2>
 
   <form style="grid-column: span 2" method="post" use:enhance>
-    <button type="submit" name="insert">Insert Dummy Data</button>
+    <button type="submit" name="insertUsers">Insert Dummy Users</button>
+    <button type="submit" name="insertPlaces">Insert Dummy Places</button>
   </form>
 
   {#if user}

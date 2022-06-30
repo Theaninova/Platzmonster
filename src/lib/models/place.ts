@@ -13,7 +13,7 @@ export interface IPlaceRaw {
   type: PlaceType
   description?: string
   parentId?: string
-  location: Point
+  location?: Point
   polygon?: Polygon
 }
 
@@ -37,7 +37,6 @@ const PlaceSchema = new mongoose.Schema({
     type: String,
   },
   location: {
-    required: true,
     type: PointSchema,
   },
   polygon: {
