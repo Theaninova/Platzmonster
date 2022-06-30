@@ -4,7 +4,7 @@
   import UserDataForm from "../lib/components/types/forms/UserDataForm.svelte"
 </script>
 
-<h1>Register</h1>
+<h1>Registrieren</h1>
 
 <form method="post" action="/register" use:enhance={{redirect: "/", result: refreshUser}} class="card">
   <UserDataForm />

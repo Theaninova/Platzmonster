@@ -27,7 +27,7 @@
       autocomplete="username"
       type="text"
       id="uname"
-      placeholder="Username"
+      placeholder="Nutzername"
       name={loginFormNames.username}
       required
     />

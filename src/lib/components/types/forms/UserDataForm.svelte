@@ -7,7 +7,7 @@
 </script>
 
 <fieldset>
-  <label for="registerusertype"><i>badge</i>&nbsp;type</label>
+  <label for="registerusertype"><i>badge</i>&nbsp;typ</label>
   <select id="registerusertype" name={userDataFormNames.userType} required>
     <option value="user">User</option>
     <option value="admin">Admin</option>
@@ -24,7 +24,7 @@
     maxlength="30"
     size="30"
     value={user?.name || ""}
-    placeholder="Wähle einen Usernamen aus"
+    placeholder="Nutzername"
     required
   />
 </fieldset>
@@ -37,7 +37,7 @@
     name={userDataFormNames.firstName}
     maxlength="30"
     size="30"
-    placeholder="Gebe deinen Vornamen ein"
+    placeholder="Vorname"
     required
   />
 </fieldset>
@@ -50,7 +50,7 @@
     name={userDataFormNames.lastName}
     maxlength="30"
     size="30"
-    placeholder="Gebe deinen Nachnamen ein"
+    placeholder="Nachname"
   />
 </fieldset>
 
@@ -62,7 +62,7 @@
     name={userDataFormNames.matrikelNumber}
     maxlength="30"
     size="30"
-    placeholder="Gebe deine Matrikelnummer an"
+    placeholder="Matrikelnummer"
     required
   />
 </fieldset>
@@ -76,7 +76,7 @@
     name={userDataFormNames.email}
     maxlength="30"
     size="30"
-    placeholder="Gebe deine E-Mail-Adresse an"
+    placeholder="E-Mail Adresse"
     required
   />
 </fieldset>
@@ -88,7 +88,7 @@
   minlength="8"
   maxlength="30"
   size="30"
-  placeholder="Wähle ein Passwort aus"
+  placeholder="Passwort"
   required
 >
   <!--suppress XmlInvalidId -->
@@ -103,7 +103,7 @@
   minlength="8"
   maxlength="30"
   size="30"
-  placeholder="Wiederhole das Passwort"
+  placeholder="Passwort Wiederholen"
   required
 >
   <!--suppress XmlInvalidId -->

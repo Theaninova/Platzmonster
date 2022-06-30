@@ -32,7 +32,7 @@
 
 <section class="card">
   <form {action} {method} use:enhance={{result: ({response}) => (searchResult = response.json())}}>
-    <input type="search" placeholder="Search..." name={searchFormNames.search} />
+    <input type="search" placeholder="Suche..." name={searchFormNames.search} />
     <button bind:this={searchButton} type="submit" class="search-button" name={searchFormNames.page} value={0}
       ><i>search</i></button
     >
@@ -55,7 +55,11 @@
       {#await searchResult}
         <p>Loading</p>
       {:then result}
-        <p>{result.count} results. Page {page + 1} / {pages}</p>
+        {#if result.count === 0}
+          <p>Keine Ergebnisse</p>
+        {:else}
+          <p>{result.count} Ergebnis{result.count === 1 ? "" : "se"}. Seite {page + 1} / {pages}</p>
+        {/if}
         {#each result.results as item (item._id)}
           <div class="search-result">
             <svelte:component this={listItem} {item} {...$$restProps} />
@@ -68,7 +72,7 @@
         {/each}
       {/await}
     {:else}
-      <p>No results</p>
+      <p>Nutze die Suchleiste um deine Suche zu starten!</p>
     {/if}
   </div>
 </section>

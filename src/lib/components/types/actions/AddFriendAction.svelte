@@ -4,4 +4,4 @@
   export let item: IUser
 </script>
 
-<form><button>Add Friend<i>person_add</i></button></form>
+<form><button>Folgen<i>person_add</i></button></form>
