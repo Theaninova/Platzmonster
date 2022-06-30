@@ -48,7 +48,7 @@
             {password}
           </td>
 
-          <td><a href="/edituser/{matrikelNumber}" class="button"> <i>edit</i> </a></td>
+          <td><a href="/user/{_id}/edit" class="button"> <i>edit</i> </a></td>
 
           <td>
             <button type="submit" name="delete" class="button danger-button" value={_id}>

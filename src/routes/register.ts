@@ -2,27 +2,27 @@ import {PASSWORD_SALT_ROUNDS, User} from "$lib/models/user"
 import bcrypt from "bcrypt"
 import type {RequestHandler} from "./__types/register"
 import {logIn} from "../lib/session/sessionHandler"
-import {registerFormNames} from "../lib/models/form-names/register"
+import {userDataFormNames} from "../lib/models/form-names/user-data"
 
 export const post: RequestHandler = async ({request, locals}) => {
   const form = await request.formData()
 
   await new User({
-    name: form.get(registerFormNames.name) as string,
-    matrikelNumber: form.get(registerFormNames.matrikelNumber) as string,
-    userType: form.get(registerFormNames.userType) as string,
-    firstname: form.get(registerFormNames.firstName) as string,
-    lastname: form.get(registerFormNames.lastName) as string,
-    email: form.get(registerFormNames.email) as string,
-    password: await bcrypt.hash(form.get(registerFormNames.password) as string, PASSWORD_SALT_ROUNDS),
+    name: form.get(userDataFormNames.name) as string,
+    matrikelNumber: form.get(userDataFormNames.matrikelNumber) as string,
+    userType: form.get(userDataFormNames.userType) as string,
+    firstname: form.get(userDataFormNames.firstName) as string,
+    lastname: form.get(userDataFormNames.lastName) as string,
+    email: form.get(userDataFormNames.email) as string,
+    password: await bcrypt.hash(form.get(userDataFormNames.password) as string, PASSWORD_SALT_ROUNDS),
   }).save()
 
   console.log(locals)
 
   if (!locals.user) {
     const cookies = await logIn(
-      form.get(registerFormNames.name) as string,
-      form.get(registerFormNames.password) as string,
+      form.get(userDataFormNames.name) as string,
+      form.get(userDataFormNames.password) as string,
     )
 
     return {

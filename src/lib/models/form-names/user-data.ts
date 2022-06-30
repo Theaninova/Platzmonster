@@ -1,4 +1,4 @@
-export const registerFormNames = {
+export const userDataFormNames = {
   name: "name",
   matrikelNumber: "matrikelNumber",
   userType: "userType",
