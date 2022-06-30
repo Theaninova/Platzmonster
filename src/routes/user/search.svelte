@@ -6,4 +6,4 @@
 
 <h1>User Search</h1>
 
-<SearchPage action="/api/search/user" listItem={UserListItem} actionButtons={AddFriendAction} />
+<SearchPage action="/api/user/search" listItem={UserListItem} actionButtons={AddFriendAction} />
