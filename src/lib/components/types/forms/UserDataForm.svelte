@@ -37,6 +37,7 @@
     name={userDataFormNames.firstName}
     maxlength="30"
     size="30"
+    value={user?.firstname || ""}
     placeholder="Vorname"
     required
   />
@@ -50,6 +51,7 @@
     name={userDataFormNames.lastName}
     maxlength="30"
     size="30"
+    value={user?.lastname || ""}
     placeholder="Nachname"
   />
 </fieldset>
@@ -62,6 +64,7 @@
     name={userDataFormNames.matrikelNumber}
     maxlength="30"
     size="30"
+    value={user?.matrikelNumber || ""}
     placeholder="Matrikelnummer"
     required
   />
@@ -76,6 +79,7 @@
     name={userDataFormNames.email}
     maxlength="30"
     size="30"
+    value={user?.email || ""}
     placeholder="E-Mail Adresse"
     required
   />
@@ -88,6 +92,7 @@
   minlength="8"
   maxlength="30"
   size="30"
+
   placeholder="Passwort"
   required
 >
