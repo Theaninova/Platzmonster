@@ -22,7 +22,7 @@ export const post: RequestHandler<Record<string, string>, SearchResult<IPlace>> 
   const action = query === "*" ? {} : {$text: {$search: query}}
 
   const count = await Place.find(action).countDocuments()
-  const result = await Place.find(action, locals.user?.userType === PlaceType.ADMIN ? {} : {password: 0})
+  const result = await Place.find(action)
     .skip(page * entriesPerPage)
     .limit(entriesPerPage)
 

@@ -16,11 +16,18 @@
       <abbr class="icon-24" title={placeTypeTitles[item.type]}
         >{item.type === PlaceType.BUILDING ? "house" : item.type === PlaceType.ROOM ? "meeting_room" : "laptop_chromebook"}</abbr
       >
-      <a href="/user/{item._id}"><abbr title={item._id}>{item.name}</abbr></a>
+      <a href="/place/{item._id}"><abbr title={item._id}>{item.name}</abbr></a>
     </h3>
     <p class="subtitle">{item.name}</p>
     <p>{item.description}</p>
-    <p>{item.parentId}</p> <!-- hier nochmal nachfragen was zu tun ist -->
+    {#if item.type === PlaceType.BUILDING}
+    <p></p>
+  {:else if item.type === PlaceType.ROOM}
+  <button><a href="/place/{item.parentId}">Zum Gebäude</a></button>
+  {:else}
+  <button><a href="/place/{item.parentId}">Zum Raum</a></button>
+  {/if}
+    <p></p>
   </div>
   
   <style lang="scss">
