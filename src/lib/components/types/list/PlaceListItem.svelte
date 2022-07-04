@@ -19,13 +19,18 @@
       <a href="/place/{item._id}"><abbr title={item._id}>{item.name}</abbr></a>
     </h3>
     <p class="subtitle">{item.name}</p>
+    {#if item.description === null || item.description === undefined}
+    <p />
+    {:else}
     <p>{item.description}</p>
+  {/if}
+  
     {#if item.type === PlaceType.BUILDING}
-    <p></p>
+    <p />
   {:else if item.type === PlaceType.ROOM}
-  <button><a href="/place/{item.parentId}">Zum Gebäude</a></button>
+  <button><a href="/place/{item.parentId}">Zum Gebäude <i>arrow_upward</i></a></button>
   {:else}
-  <button><a href="/place/{item.parentId}">Zum Raum</a></button>
+  <button><a href="/place/{item.parentId}">Zum Raum <i>arrow_upward</i></a></button>
   {/if}
     <p></p>
   </div>
