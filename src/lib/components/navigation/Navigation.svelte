@@ -8,7 +8,7 @@
 </script>
 
 <nav class="card">
-  <a href="/" style="margin-left: 8px; cursor: pointer" class="logo">
+  <a href="/" class="logo">
     <Logo active={$page.routeId === ""} />
   </a>
   {#if $session.user}
@@ -22,14 +22,19 @@
     </ul>
   {:else}
     <ul in:fly={{duration: 200, delay: 100, x: -20}} out:fly={{duration: 200, x: -20}}>
-      <Route href="login" icon="login">Login</Route>
       <Route href="register" icon="how_to_reg">Registrieren</Route>
+      <Route href="login" icon="login" shrink={false} iconOnly />
     </ul>
   {/if}
 </nav>
 
 <style lang="scss">
   @import "../../styles/theme";
+
+  .logo {
+    margin-left: 8px;
+    cursor: pointer;
+  }
 
   nav {
     display: grid;
@@ -50,6 +55,7 @@
   }
 
   ul {
+    padding-left: 4px;
     list-style: none;
     display: flex;
     flex-direction: row;

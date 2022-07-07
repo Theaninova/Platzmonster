@@ -3,12 +3,20 @@
 
   export let href: string
   export let icon: string | undefined
+
+  export let shrink = true
+  export let iconOnly = false
 </script>
 
 <li>
-  <a class:activeRoute={$page.url.pathname?.startsWith(`/${href}`)} class="button" href="/{href}"
-    ><slot />{#if icon}<span class="icon-18">{icon}</span>{/if}</a
-  >
+  <a
+    class:activeRoute={$page.url.pathname?.startsWith(`/${href}`)}
+    class="button"
+    class:shrink-button={shrink}
+    href="/{href}"
+    >{#if !iconOnly}<span class:text={shrink}><slot /></span> {/if}
+    {#if icon}<span class="icon-18" class:shrink-icon={shrink}>{icon}</span>{/if}
+  </a>
 </li>
 
 <style lang="scss">
@@ -16,5 +24,23 @@
 
   .activeRoute {
     background: $accent-color;
+  }
+
+  @media (max-width: 450px) {
+    .text {
+      display: none;
+    }
+
+    .shrink-button {
+      border-color: transparent;
+      box-shadow: 0 0 0 black;
+    }
+
+    .shrink-icon {
+      font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 24;
+      font-family: "Material Symbols Rounded";
+      font-size: 24px;
+      font-style: inherit;
+    }
   }
 </style>
