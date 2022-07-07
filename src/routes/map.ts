@@ -3,7 +3,6 @@ import {Place, PlaceType} from "../lib/models/place"
 
 export const get: RequestHandler = async () => {
   const buildings = await Place.find({type: PlaceType.BUILDING})
-  console.log(buildings.length)
 
   return {
     body: {

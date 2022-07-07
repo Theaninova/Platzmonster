@@ -48,6 +48,8 @@
     "pre-commit": "^1.2.2",
     "typescript": "~4.6.2",
     "@types/leaflet": "^1.7.11",
+    "@types/leaflet.markercluster": "^1.5.1",
+    "leaflet.markercluster": "^1.5.3",
     "leaflet": "^1.8.0",
     "cypress": "^10.1.0"
   },

@@ -1,6 +1,8 @@
 <script lang="ts">
   import {onMount} from "svelte"
   import "leaflet/dist/leaflet.css"
+  import "leaflet.markercluster/dist/MarkerCluster.css"
+  import "leaflet.markercluster/dist/MarkerCluster.Default.css"
   import type {IPlace} from "../lib/models/place"
 
   export let buildings: IPlace[]
@@ -9,6 +11,8 @@
     if (!window) return
 
     const leaflet = await import("leaflet")
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const cluster = await import("leaflet.markercluster/dist/leaflet.markercluster")
     const map = leaflet.map("map").setView([52.5123, 13.32697], 13)
     leaflet
       .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -17,15 +21,17 @@
       })
       .addTo(map)
 
-    console.log(buildings.length)
-    const markers = buildings
-      .filter(it => it.location)
-      .map(it =>
-        leaflet
-          .marker(it.location!.coordinates.reverse())
-          .bindPopup(`${it.name} (${it.shortName})\n<a href="place/${it._id}">Details</a>`)
-          .addTo(map),
-      )
+    const markers = leaflet.markerClusterGroup()
+    markers.addLayers(
+      buildings
+        .filter(it => it.location)
+        .map(it =>
+          leaflet
+            .marker(it.location!.coordinates.reverse())
+            .bindPopup(`${it.name} (${it.shortName})\n<a href="place/${it._id}">Details</a>`),
+        ),
+    )
+    map.addLayer(markers)
   })
 </script>
 
