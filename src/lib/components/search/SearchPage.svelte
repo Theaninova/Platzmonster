@@ -3,7 +3,7 @@
   import {enhance} from "../../form"
   import {searchFormNames} from "../../models/form-names/search"
   import type {SearchResult} from "../../../routes/api/user/search"
-  import {fly, fade} from "svelte/transition"
+  import {fly} from "svelte/transition"
   import {onMount} from "svelte"
 
   export let searchResult: Promise<SearchResult<any>> = undefined
@@ -126,8 +126,8 @@
 
   .actions {
     position: absolute;
-    right: 20px;
-    top: 2px;
+    right: 0;
+    top: 0;
   }
 
   form {

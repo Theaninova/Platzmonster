@@ -23,6 +23,13 @@
 <style global lang="scss">
   @import "../lib/styles/styles.scss";
 
+  //noinspection CssInvalidAtRule
+  @layer base {
+    html {
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+
   html,
   body {
     overflow: hidden;

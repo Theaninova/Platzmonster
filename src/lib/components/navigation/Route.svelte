@@ -32,15 +32,20 @@
     }
 
     .shrink-button {
-      border-color: transparent;
+      border: none;
+      padding: 20px 8px;
       box-shadow: 0 0 0 black;
     }
 
     .shrink-icon {
-      font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 24;
+      font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 28;
       font-family: "Material Symbols Rounded";
-      font-size: 24px;
+      font-size: 28px;
       font-style: inherit;
+    }
+
+    .shrink-icon {
+      z-index: 5;
     }
   }
 </style>
