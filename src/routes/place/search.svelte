@@ -4,6 +4,6 @@
   import RatingAction from "../../lib/components/types/actions/RatingAction.svelte"
 </script>
 
-<h1>Arbeitsplatz Suche</h1>
+<h1>Arbeitsplätze</h1>
 
 <SearchPage action="/api/place/search" listItem={PlaceListItem} actionButtons={RatingAction} />

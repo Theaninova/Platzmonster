@@ -15,6 +15,7 @@
 
   main {
     overflow-y: auto;
+    overflow-x: hidden;
     padding-bottom: 16px;
 
     transform: translateY(-16px);
@@ -22,5 +23,11 @@
 
     grid-row: 2;
     grid-column: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
   }
 </style>

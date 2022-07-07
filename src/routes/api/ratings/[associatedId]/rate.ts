@@ -12,8 +12,6 @@ export const post: RequestHandler = async ({request, locals, params}) => {
     associatedId: params.associatedId,
   })
 
-
-
   const formData = await request.formData()
 
   await new Rating({

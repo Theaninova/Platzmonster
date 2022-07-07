@@ -72,8 +72,9 @@
 
   p {
     margin: 0;
-    font-size: 1em;
-    transform: translateY(-0.5em);
+    font-size: 1.2em;
+    font-weight: bolder;
+    transform: translateY(-0.4em);
   }
 
   form {

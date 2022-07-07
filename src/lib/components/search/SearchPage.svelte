@@ -3,6 +3,7 @@
   import {enhance} from "../../form"
   import {searchFormNames} from "../../models/form-names/search"
   import type {SearchResult} from "../../../routes/api/user/search"
+  import {fly, fade} from "svelte/transition"
 
   export let searchResult: Promise<SearchResult<any>> = undefined
 
@@ -19,6 +20,8 @@
   $: noPrev = page <= 0
   $: noNext = page >= pages - 1
 
+  let flyDistance = 0
+
   $: {
     searchResult?.then(result => {
       itemsPerPage = result.entriesPerPage
@@ -33,8 +36,13 @@
 <section class="card">
   <form {action} {method} use:enhance={{result: ({response}) => (searchResult = response.json())}}>
     <input type="search" placeholder="Suche..." name={searchFormNames.search} />
-    <button bind:this={searchButton} type="submit" class="search-button" name={searchFormNames.page} value={0}
-      ><i>search</i></button
+    <button
+      bind:this={searchButton}
+      type="submit"
+      class="search-button"
+      name={searchFormNames.page}
+      value={0}
+      on:click={() => (flyDistance = 0)}><i>search</i></button
     >
     <input
       style="display: none"
@@ -42,37 +50,45 @@
       bind:value={itemsPerPage}
       name={searchFormNames.entriesPerPage}
     />
-    <button style="grid-row: 1" disabled={noPrev} name={searchFormNames.page} value={page - 1} type="submit"
-      ><i>navigate_before</i></button
+    <button
+      style="grid-row: 1"
+      disabled={noPrev}
+      name={searchFormNames.page}
+      value={page - 1}
+      type="submit"
+      on:click={() => (flyDistance = -1)}><i>navigate_before</i></button
     >
-    <button disabled={noNext} type="submit" name={searchFormNames.page} value={page + 1}
-      ><i>navigate_next</i></button
+    <button
+      disabled={noNext}
+      type="submit"
+      name={searchFormNames.page}
+      value={page + 1}
+      on:click={() => (flyDistance = 1)}><i>navigate_next</i></button
     >
   </form>
-
-  <div class="search-results">
+  <div class="search-results-container">
     {#if searchResult}
-      {#await searchResult}
-        <p>Loading</p>
-      {:then result}
-        {#if result.count === 0}
-          <p>Keine Ergebnisse</p>
-        {:else}
-          <p>{result.count} Ergebnis{result.count === 1 ? "" : "se"}. Seite {page + 1} / {pages}</p>
-        {/if}
-        {#each result.results as item (item._id)}
-          <div class="search-result">
-            <svelte:component this={listItem} {item} {...$$restProps} />
-            {#if action}
-              <div class="actions">
-                <svelte:component this={actionButtons} {item} on:refresh={() => searchButton.click()} />
-              </div>
-            {/if}
-          </div>
-        {/each}
+      {#await searchResult then result}
+        <div class="search-results" in:fly={{x: flyDistance * 50}} out:fly={{x: -flyDistance * 50}}>
+          {#if result.count === 0}
+            <p>Keine Ergebnisse</p>
+          {:else}
+            <p>{result.count} Ergebnis{result.count === 1 ? "" : "se"}. Seite {page + 1} / {pages}</p>
+          {/if}
+          {#each result.results as item (item._id)}
+            <div class="search-result">
+              <svelte:component this={listItem} {item} {...$$restProps} />
+              {#if action}
+                <div class="actions">
+                  <svelte:component this={actionButtons} {item} on:refresh={() => searchButton.click()} />
+                </div>
+              {/if}
+            </div>
+          {/each}
+        </div>
       {/await}
     {:else}
-      <p>Nutze die Suchleiste um deine Suche zu starten!</p>
+      <p transition:fade>Nutze die Suchleiste um deine Suche zu starten!</p>
     {/if}
   </div>
 </section>
@@ -84,6 +100,15 @@
 
   .search-result {
     position: relative;
+  }
+
+  .search-results-container {
+    display: grid;
+
+    > * {
+      grid-column: 1;
+      grid-row: 1;
+    }
   }
 
   .actions {
@@ -110,7 +135,7 @@
     background: white;
     padding: 0;
     max-width: 24cm;
-    margin-inline: auto;
+    width: calc(100% - 8px);
 
     contain: content;
 

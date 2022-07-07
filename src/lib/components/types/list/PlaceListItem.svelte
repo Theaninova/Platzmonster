@@ -11,7 +11,7 @@
   }
 </script>
 
-<div style="text-overflow: ellipsis">
+<div>
   <h3>
     <abbr class="icon-24" title={placeTypeTitles[item.type]}
       >{item.type === PlaceType.BUILDING
@@ -40,6 +40,16 @@
 </div>
 
 <style lang="scss">
+  div {
+    position: relative;
+  }
+
+  h3,
+  .subtitle {
+    width: calc(100% - 184px);
+    overflow: hidden;
+  }
+
   h3 {
     margin-block-end: 0;
   }

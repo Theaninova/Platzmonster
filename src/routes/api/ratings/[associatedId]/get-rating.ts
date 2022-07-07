@@ -23,10 +23,12 @@ export const get: RequestHandler = async ({params, locals}) => {
     },
   ])
 
-  const userRating = locals.user ? await Rating.findOne({
-    userId: locals.user._id.toString(),
-    associatedId: params.associatedId,
-  }) : undefined
+  const userRating = locals.user
+    ? await Rating.findOne({
+        userId: locals.user._id.toString(),
+        associatedId: params.associatedId,
+      })
+    : undefined
 
   return {
     body: {
