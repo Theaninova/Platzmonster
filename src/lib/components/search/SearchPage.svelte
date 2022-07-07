@@ -4,6 +4,7 @@
   import {searchFormNames} from "../../models/form-names/search"
   import type {SearchResult} from "../../../routes/api/user/search"
   import {fly, fade} from "svelte/transition"
+  import {onMount} from "svelte"
 
   export let searchResult: Promise<SearchResult<any>> = undefined
 
@@ -29,6 +30,10 @@
       page = result.page
     })
   }
+
+  onMount(() => {
+    searchButton.click()
+  })
 
   let searchButton: HTMLButtonElement
 </script>
@@ -69,7 +74,11 @@
   <div class="search-results-container">
     {#if searchResult}
       {#await searchResult then result}
-        <div class="search-results" in:fly={{x: flyDistance * 50}} out:fly={{x: -flyDistance * 50}}>
+        <div
+          class="search-results"
+          in:fly={{x: flyDistance * 50, duration: 200, delay: 100}}
+          out:fly={{x: -flyDistance * 50, duration: 200}}
+        >
           {#if result.count === 0}
             <p>Keine Ergebnisse</p>
           {:else}
@@ -88,7 +97,7 @@
         </div>
       {/await}
     {:else}
-      <p transition:fade>Nutze die Suchleiste um deine Suche zu starten!</p>
+      <div class="placeholder" />
     {/if}
   </div>
 </section>
@@ -97,6 +106,10 @@
   @import "../../styles/theme";
 
   $gap: 6px;
+
+  .placeholder {
+    height: 100vh;
+  }
 
   .search-result {
     position: relative;

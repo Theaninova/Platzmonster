@@ -19,7 +19,7 @@ export const post: RequestHandler<Record<string, string>, SearchResult<IUser>> =
   const page = Number.parseInt(form.get(searchFormNames.page) as string) || 0
   const entriesPerPage = Number.parseInt(form.get(searchFormNames.entriesPerPage) as string) || 20
 
-  const action = query === "*" ? {} : {$text: {$search: query}}
+  const action = query === "*" || !query ? {} : {$text: {$search: query}}
 
   const count = await User.find(action).countDocuments()
   const result = await User.find(action, locals.user?.userType === UserType.ADMIN ? {} : {password: 0})

@@ -30,4 +30,17 @@
     align-items: center;
     flex-grow: 1;
   }
+
+  @media (max-width: $breakpoint-phone) {
+    main {
+      grid-row: 1;
+      grid-column: 1;
+
+      padding-bottom: 32px;
+      margin-inline: 8px;
+
+      transform: translateY(-16px);
+      height: calc(100% + 16px);
+    }
+  }
 </style>

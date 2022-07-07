@@ -38,4 +38,11 @@
     display: grid;
     grid-template-rows: min-content auto;
   }
+
+  @media (max-width: $breakpoint-phone) {
+    body {
+      grid-template-rows: 1fr auto;
+      margin: 0;
+    }
+  }
 </style>

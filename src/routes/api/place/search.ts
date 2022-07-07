@@ -19,7 +19,7 @@ export const post: RequestHandler<Record<string, string>, SearchResult<IPlace>> 
   const page = Number.parseInt(form.get(searchFormNames.page) as string) || 0
   const entriesPerPage = Number.parseInt(form.get(searchFormNames.entriesPerPage) as string) || 20
 
-  const action = query === "*" ? {} : {$text: {$search: query}}
+  const action = query === "*" || !query ? {} : {$text: {$search: query}}
 
   const count = await Place.find(action).countDocuments()
   const result = await Place.find(action)

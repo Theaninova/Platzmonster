@@ -60,6 +60,17 @@
     z-index: 1000;
   }
 
+  @media (max-width: $breakpoint-phone) {
+    nav {
+      grid-row: 2;
+      grid-column: 1;
+      border-radius: 16px 16px 0 0;
+      border-style: solid none none none;
+      box-shadow: none;
+      margin: 0;
+    }
+  }
+
   ul {
     padding-left: 4px;
     list-style: none;
