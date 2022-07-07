@@ -5,7 +5,11 @@
 </script>
 
 {#key activeRoute}
-  <main in:fly={{duration: 200, delay: 200, y: 30}} out:fly={{duration: 200, y: 30}}>
+  <main
+    style="margin-inline: {activeRoute.endsWith('map') ? 0 : 8}px"
+    in:fly={{duration: 200, delay: 200, y: 30}}
+    out:fly={{duration: 200, y: 30}}
+  >
     <slot />
   </main>
 {/key}
@@ -37,10 +41,9 @@
       grid-column: 1;
 
       padding-bottom: 32px;
-      margin-inline: 8px;
-
       transform: translateY(-16px);
       height: calc(100% + 16px);
+      margin-inline: 8px;
     }
   }
 </style>

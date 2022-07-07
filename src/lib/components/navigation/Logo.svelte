@@ -50,7 +50,7 @@
   svg:last-child {
     display: none;
   }
-  @media (min-width: $breakpoint-phone) {
+  @media (min-width: 1024px) {
     svg:first-child {
       display: none;
     }

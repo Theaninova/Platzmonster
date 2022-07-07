@@ -13,12 +13,14 @@
   </a>
   {#if $session.user}
     <ul in:fly={{duration: 200, delay: 100, x: 100}} out:fly={{duration: 200, x: 100}}>
-      {#if $session.user?.userType === UserType.ADMIN}
-        <Route href="admin" icon="admin_panel_settings">Admin</Route>
-      {/if}
+      <Route href="map" icon="map">Karte</Route>
       <Route href="place/search" icon="domain_add">Reservieren</Route>
       <Route href="user/search" icon="group_add">Freunde</Route>
       <li class="divider" />
+
+      {#if $session.user?.userType === UserType.ADMIN}
+        <Route href="admin" icon="admin_panel_settings" iconOnly />
+      {/if}
       <Route href="user/{$session.user?._id}" iconOnly icon="account_circle" />
       <li><LogoutButton /></li>
     </ul>

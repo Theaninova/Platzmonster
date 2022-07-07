@@ -26,7 +26,7 @@
     background: $accent-color;
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: $breakpoint-phone) {
     .text {
       display: none;
     }
