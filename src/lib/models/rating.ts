@@ -22,7 +22,6 @@ const RatingSchema = new mongoose.Schema({
     type: String,
   },
   rating: {
-    required: true,
     type: Number,
   },
   category: {
