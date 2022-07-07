@@ -9,12 +9,7 @@
   let rating: Promise<RatingInfo>
 
   const reload = async () => {
-    rating = fetch(`/api/ratings/${item._id}/get-rating`)
-      .then(it => it.json() as RatingInfo)
-      .then(it => {
-        console.log(it?.userRating?.medal)
-        return it
-      })
+    rating = fetch(`/api/ratings/${item._id}/get-rating`).then(it => it.json() as RatingInfo)
   }
 
   onMount(reload)
