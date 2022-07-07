@@ -1,6 +1,7 @@
 import type {RequestHandler} from "./__types/index"
 import {clearDatabase, insertAdmins, insertUsers} from "../lib/models/mock/seedUsers"
 import {insertPlaces} from "../lib/models/mock/seedPlaces"
+import {insertRatings} from "../lib/models/mock/seedRatings"
 
 export const get: RequestHandler = async ({locals}) => {
   return {
@@ -24,6 +25,12 @@ export const post: RequestHandler = async ({request}) => {
       floors: 6,
       roomsPerFloor: 40,
       workplacesPerRoom: 10,
+    })
+  } else if (form.has("insertRatings")) {
+    await insertRatings({
+      placePercentage: 0.6,
+      ratingsPerPlace: 10,
+      categories: ["categoryA", "categoryB"],
     })
   }
 

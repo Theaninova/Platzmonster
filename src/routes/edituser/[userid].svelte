@@ -12,17 +12,12 @@
 </script>
 
 <script>
-
-
-
-  import {User} from "../../lib/models/user";
+  import {User} from "../../lib/models/user"
   import SearchPage from "../../lib/components/search/SearchPage.svelte"
   import UserListItem from "../../lib/components/types/list/UserListItem.svelte"
   import AddFriendAction from "../../lib/components/types/actions/AddFriendAction.svelte"
   export let slug
   export let post
-
-
 </script>
 
 <h1>{slug}</h1>

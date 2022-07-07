@@ -20,8 +20,6 @@
   <button type="submit"> Speichern </button>
 </form>
 
-
-
 <style>
   .card {
     background: white;
