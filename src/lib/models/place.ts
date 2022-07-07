@@ -10,6 +10,14 @@ export enum PlaceType {
 
 export interface IPlaceRaw {
   name: string
+  shortName?: string
+  address?: {
+    street: string
+    streetNumber: string
+    additionalAddressInfo?: string
+    city: string
+    zip: string
+  }
   type: PlaceType
   description?: string
   parentId?: string
@@ -25,6 +33,26 @@ const PlaceSchema = new mongoose.Schema({
   name: {
     required: true,
     type: String,
+  },
+  shortName: {
+    type: String,
+  },
+  address: {
+    street: {
+      type: String,
+    },
+    streetNumber: {
+      type: String,
+    },
+    additionalAddressInfo: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    zip: {
+      type: String,
+    },
   },
   type: {
     required: true,
@@ -46,13 +74,21 @@ const PlaceSchema = new mongoose.Schema({
 
 PlaceSchema.index(
   {
-    name: "text",
-    description: "text",
+    "name": "text",
+    "description": "text",
+    "address.street": "text",
+    "address.city": "text",
+    "address.zip": "text",
+    "address.additionalAddressInfo": "text",
   },
   {
     weights: {
-      name: 5,
-      description: 1,
+      "name": 5,
+      "description": 1,
+      "address.street": 2,
+      "address.city": 2,
+      "address.zip": 2,
+      "address.additionalAddressInfo": 2,
     },
   },
 )

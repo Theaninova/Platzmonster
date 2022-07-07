@@ -21,7 +21,6 @@ export const post: RequestHandler = async ({request}) => {
     await insertAdmins(2)
   } else if (form.has("insertPlaces")) {
     await insertPlaces({
-      buildingsCount: 20,
       floors: 6,
       roomsPerFloor: 40,
       workplacesPerRoom: 10,

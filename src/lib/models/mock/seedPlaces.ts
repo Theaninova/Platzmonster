@@ -1,5 +1,5 @@
-import places from "./MOCK_PLACES.json"
 import {Place, PlaceType} from "../place"
+import {convertTuData} from "./tu-data"
 
 export function generateRoomNames(name: string, roomCounts: number[]): string[] {
   const roomPadding = roomCounts.reduce((a, b) => Math.max(a, b.toString().length), 0)
@@ -16,7 +16,6 @@ export function generateWorkPlaceNames(name: string, count: number) {
 }
 
 export interface PlaceSeedConfig {
-  buildingsCount: number
   floors: number
   roomsPerFloor: number
   workplacesPerRoom: number
@@ -29,22 +28,17 @@ export function chunk<T>(arr: T[], chunkSize = 1, cache: T[][] = []): T[][] {
   return cache
 }
 
-export async function insertPlaces({
-  buildingsCount,
-  roomsPerFloor,
-  workplacesPerRoom,
-  floors,
-}: PlaceSeedConfig) {
-  if (buildingsCount * floors * roomsPerFloor * workplacesPerRoom > 100_000) {
-    throw new Error(`Refusing to insert more than 10_000 places`)
+export async function insertPlaces({roomsPerFloor, workplacesPerRoom, floors}: PlaceSeedConfig) {
+  const buildings = convertTuData().map(it => new Place(it))
+
+  const totalCount = buildings.length * floors * roomsPerFloor * workplacesPerRoom
+  if (buildings.length * floors * roomsPerFloor * workplacesPerRoom > 1_000_000) {
+    throw new Error(`Refusing to insert more than ${totalCount} places`)
   }
 
-  const buildings = places
-    .slice(0, buildingsCount)
-    .map(({name, description}) => new Place({name, description, type: PlaceType.BUILDING}))
   const rooms = buildings.flatMap(building =>
     generateRoomNames(
-      "Raum",
+      building.shortName!,
       Array.from({length: Math.floor(Math.random() * floors)}, () =>
         Math.floor(Math.random() * roomsPerFloor),
       ),
