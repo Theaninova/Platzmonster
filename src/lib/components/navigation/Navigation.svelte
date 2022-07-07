@@ -16,8 +16,10 @@
       {#if $session.user?.userType === UserType.ADMIN}
         <Route href="admin" icon="admin_panel_settings">Admin</Route>
       {/if}
+      <Route href="place/search" icon="domain_add">Reservieren</Route>
       <Route href="user/search" icon="group_add">Freunde</Route>
-      <Route href="user/{$session.user?._id}" icon="account_circle">{$session.user?.name}</Route>
+      <li class="divider" />
+      <Route href="user/{$session.user?._id}" iconOnly icon="account_circle" />
       <li><LogoutButton /></li>
     </ul>
   {:else}
@@ -30,6 +32,10 @@
 
 <style lang="scss">
   @import "../../styles/theme";
+
+  .divider {
+    width: 2px;
+  }
 
   .logo {
     margin-left: 8px;
@@ -60,6 +66,7 @@
     display: flex;
     flex-direction: row;
     gap: 4px;
+    align-items: center;
 
     grid-column: 2;
     grid-row: 1;

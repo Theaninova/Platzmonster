@@ -4,6 +4,6 @@
   import AddFriendAction from "../../lib/components/types/actions/AddFriendAction.svelte"
 </script>
 
-<h1>Personen Suche</h1>
+<h1>Personen</h1>
 
 <SearchPage action="/api/user/search" listItem={UserListItem} actionButtons={AddFriendAction} />

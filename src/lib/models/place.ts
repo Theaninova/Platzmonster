@@ -44,4 +44,17 @@ const PlaceSchema = new mongoose.Schema({
   },
 })
 
+PlaceSchema.index(
+  {
+    name: "text",
+    description: "text",
+  },
+  {
+    weights: {
+      name: 5,
+      description: 1,
+    },
+  },
+)
+
 export const Place = mongoose.model<IPlaceRaw>("Place", PlaceSchema)
