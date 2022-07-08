@@ -36,7 +36,7 @@
   <PasswordInput
     autocomplete="current-password"
     id="psw"
-    placeholder="Password"
+    placeholder="Passwort"
     name={loginFormNames.password}
     required
   >

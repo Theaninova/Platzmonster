@@ -7,6 +7,34 @@ import {userDataFormNames} from "../lib/models/form-names/user-data"
 export const post: RequestHandler = async ({request, locals}) => {
   const form = await request.formData()
 
+  const user = await User.findOne({name: form.get(userDataFormNames.name)})
+  if (user) {
+    return {
+      status: 409,
+      body: "Dieser Nutzername ist bereits vergeben"
+    }
+    
+  }
+
+
+  const matrikelNumber = await User.findOne({matrikelNumber: form.get(userDataFormNames.matrikelNumber)})
+  if (matrikelNumber) {
+    return {
+      status: 409,
+      body: "Diese Matrikelnummer ist bereits vergeben"
+    }
+    
+  }
+
+  const email = await User.findOne({email: form.get(userDataFormNames.email)})
+  if (email) {
+    return {
+      status: 409,
+      body: "Diese E-Mail-Adresse wird bereits genutzt"
+    }
+    
+  }
+
   await new User({
     name: form.get(userDataFormNames.name) as string,
     matrikelNumber: form.get(userDataFormNames.matrikelNumber) as string,
