@@ -1,6 +1,15 @@
 import {User} from "../lib/models/user"
 import type {RequestHandler} from "./__types/admin"
 
+export const searchFormNames = {
+  search: "search",
+  page: "page",
+  entriesPerPage: "entriesPerPage",
+  next: "next",
+  prev: "prev",
+}
+
+
 export async function get() {
   return {
     body: {
