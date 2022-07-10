@@ -22,10 +22,13 @@
       <td> {item.address.city} </td>
     </tr>
     <tr>
+      <th> Beschreibung </th>
+      <td> {item.description || "-"}</td>
+    </tr>
+    <tr>
       <button type="button"> Reservieren </button>
     </tr>
   </table>
-
 </div>
 
 <style>
