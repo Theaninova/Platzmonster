@@ -11,28 +11,24 @@ export const post: RequestHandler = async ({request, locals}) => {
   if (user) {
     return {
       status: 409,
-      body: "Dieser Nutzername ist bereits vergeben"
+      body: "Dieser Nutzername ist bereits vergeben",
     }
-    
   }
-
 
   const matrikelNumber = await User.findOne({matrikelNumber: form.get(userDataFormNames.matrikelNumber)})
   if (matrikelNumber) {
     return {
       status: 409,
-      body: "Diese Matrikelnummer ist bereits vergeben"
+      body: "Diese Matrikelnummer ist bereits vergeben",
     }
-    
   }
 
   const email = await User.findOne({email: form.get(userDataFormNames.email)})
   if (email) {
     return {
       status: 409,
-      body: "Diese E-Mail-Adresse wird bereits genutzt"
+      body: "Diese E-Mail-Adresse wird bereits genutzt",
     }
-    
   }
 
   await new User({

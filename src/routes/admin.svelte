@@ -3,9 +3,9 @@
 
   export let users: User[]
 
-  import SearchPage from "../lib/components/search/SearchPage.svelte";
-  import UserListItem from "../lib/components/types/list/UserListItem.svelte";
-  import AddFriendAction from "../lib/components/types/actions/AddFriendAction.svelte";
+  import SearchPage from "../lib/components/search/SearchPage.svelte"
+  import UserListItem from "../lib/components/types/list/UserListItem.svelte"
+  import AddFriendAction from "../lib/components/types/actions/AddFriendAction.svelte"
 </script>
 
 <h1>Admin Panel</h1>

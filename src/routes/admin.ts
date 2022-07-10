@@ -9,7 +9,6 @@ export const searchFormNames = {
   prev: "prev",
 }
 
-
 export async function get() {
   return {
     body: {
