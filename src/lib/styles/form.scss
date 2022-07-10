@@ -45,6 +45,7 @@ button,
 
   &::after {
     content: "";
+    z-index: -1;
     position: absolute;
     width: 200%;
     height: 200%;
