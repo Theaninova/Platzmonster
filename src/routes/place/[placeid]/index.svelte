@@ -1,11 +1,8 @@
 <script lang="ts">
   import type {IPlace} from "../../../lib/models/place"
 
-
   export let item: IPlace
 </script>
-
-
 
 <h1>{item.shortName}</h1>
 
@@ -18,14 +15,17 @@
       <td>{item.type}</td>
     </tr>
     <tr>
-      <th>Adresse</th>
-      <td>{item.address}</td>
+      <th>Adresse:</th>
+      <td>{item.address.street} </td>
+      <td> {item.address.streetNumber},</td>
+      <td> {item.address.zip} </td>
+      <td> {item.address.city} </td>
     </tr>
     <tr>
-      <th> Beschreibung </th>
-      <td> {item.description}</td>
+      <button type="button"> Reservieren </button>
     </tr>
   </table>
+
 </div>
 
 <style>

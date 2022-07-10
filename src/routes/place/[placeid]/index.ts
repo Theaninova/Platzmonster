@@ -1,7 +1,6 @@
 import type {RequestHandler} from "./__types/index"
 import {Place, PlaceType} from "../../../lib/models/place"
-import {Rating} from "../../../lib/models/rating";
-
+import {Rating} from "../../../lib/models/rating"
 
 export const get: RequestHandler = async ({params, locals}) => {
   const place = await Place.findById(params.placeid)
@@ -11,8 +10,7 @@ export const get: RequestHandler = async ({params, locals}) => {
     return {
       body: {
         item: JSON.parse(JSON.stringify(place)),
-        rating: JSON.parse(JSON.stringify(rating))
-
+        rating: JSON.parse(JSON.stringify(rating)),
       },
     }
   } else {
@@ -21,4 +19,3 @@ export const get: RequestHandler = async ({params, locals}) => {
     }
   }
 }
-
