@@ -5,7 +5,7 @@
   
   <h1>Arbeitsplatz Registrieren</h1>
   
-  <form method="post" action="/place" use:enhance={{redirect: "/", result: refreshUser}} class="card">
+  <form method="post" action="/registerplace" use:enhance={{redirect: "/"}} class="card">
     <fieldset>
       <label for="registerplacetype"><i>badge</i>&nbsp;typ</label>
       <select id="registerplacetype" name="registerplacetype" required>
