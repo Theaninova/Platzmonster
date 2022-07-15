@@ -3,9 +3,10 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA", "."]
     env:
-      - 'MONGO_ATLAS=$_MONGO_ATLAS'
-      - 'MONGO_ATLAS_USER=$_MONGO_ATLAS_USER'
-      - 'MONGO_ATLAS_PASSWORD=$_MONGO_ATLAS_PASSWORD'
+      - "MONGO_ATLAS=$_MONGO_ATLAS"
+      - "MONGO_ATLAS_USER=$_MONGO_ATLAS_USER"
+      - "MONGO_ATLAS_PASSWORD=$_MONGO_ATLAS_PASSWORD"
+      - "VITE_DATABASE=$_VITE_DATABASE"
   # Push the container image to Container Registry
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA"]
