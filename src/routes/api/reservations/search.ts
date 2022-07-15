@@ -11,7 +11,7 @@ export interface SearchResult<T> {
   entriesPerPage: number
 }
 
-export const post: RequestHandler<Record<string, string>, SearchResult<IPlace>> = async ({
+export const POST: RequestHandler<Record<string, string>, SearchResult<IPlace>> = async ({
   request,
   locals,
 }) => {

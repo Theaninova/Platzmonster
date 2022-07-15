@@ -1,4 +1,6 @@
+<!--suppress TypeScriptUMDGlobal -->
 <script lang="ts">
+  /* eslint-disable no-undef */
   import {onMount} from "svelte"
   import "leaflet/dist/leaflet.css"
   import "leaflet.markercluster/dist/MarkerCluster.css"
@@ -10,25 +12,23 @@
   onMount(async () => {
     if (!window) return
 
-    const leaflet = await import("leaflet")
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const cluster = await import("leaflet.markercluster/dist/leaflet.markercluster")
-    const map = leaflet.map("map").setView([52.5123, 13.32697], 13)
-    leaflet
-      .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "© OpenStreetMap",
-      })
-      .addTo(map)
+    await import("leaflet")
+    await import("leaflet.markercluster/dist/leaflet.markercluster")
 
-    const markers = leaflet.markerClusterGroup()
+    const map = L.map("map").setView([52.5123, 13.32697], 13)
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "© OpenStreetMap",
+    }).addTo(map)
+
+    const markers = L.markerClusterGroup()
     markers.addLayers(
       buildings
         .filter(it => it.location)
         .map(it =>
-          leaflet
-            .marker(it.location!.coordinates.reverse())
-            .bindPopup(`${it.name} (${it.shortName})\n<a href="place/${it._id}">Details</a>`),
+          L.marker(it.location!.coordinates.reverse()).bindPopup(
+            `${it.name} (${it.shortName})\n<a href="place/${it._id}">Details</a>`,
+          ),
         ),
     )
     map.addLayer(markers)
@@ -71,6 +71,7 @@
       :global(.leaflet-control-zoom) {
         transform: translateY(-32px);
       }
+
       :global(.leaflet-top) {
         bottom: 0;
         top: unset;

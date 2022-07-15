@@ -2,7 +2,7 @@ import type {RequestHandler} from "./__types/index"
 import {Place, PlaceType} from "../../../lib/models/place"
 import {Rating} from "../../../lib/models/rating"
 
-export const get: RequestHandler = async ({params, locals}) => {
+export const GET: RequestHandler = async ({params, locals}) => {
   const place = await Place.findById(params.placeid)
   const rating = await Rating.findById(params.placeid)
 
