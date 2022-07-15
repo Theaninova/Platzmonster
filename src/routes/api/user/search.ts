@@ -10,7 +10,7 @@ export interface SearchResult<T> {
   entriesPerPage: number
 }
 
-export const post: RequestHandler<Record<string, string>, SearchResult<IUser>> = async ({
+export const POST: RequestHandler<Record<string, string>, SearchResult<IUser>> = async ({
   request,
   locals,
 }) => {

@@ -3,7 +3,7 @@ import type {RequestHandler} from "./__types/edit"
 import {userDataFormNames} from "../../../lib/models/form-names/user-data"
 import bcrypt from "bcrypt"
 
-export const get: RequestHandler = async ({params}) => {
+export const GET: RequestHandler = async ({params}) => {
   return {
     body: {
       user: JSON.parse(JSON.stringify(await User.findById(params.userid))),
@@ -11,7 +11,7 @@ export const get: RequestHandler = async ({params}) => {
   }
 }
 
-export const post: RequestHandler = async ({request, params}) => {
+export const POST: RequestHandler = async ({request, params}) => {
   const form = await request.formData()
 
   const name = form.get(userDataFormNames.name) as string

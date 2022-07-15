@@ -11,7 +11,7 @@ export interface RatingInfo {
   userRating: IRating
 }
 
-export const get: RequestHandler = async ({params, locals}) => {
+export const GET: RequestHandler = async ({params, locals}) => {
   const rating = await Rating.aggregate([
     {$match: {associatedId: params.associatedId}},
     {

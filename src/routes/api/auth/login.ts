@@ -2,7 +2,7 @@ import type {RequestHandler} from "@sveltejs/kit"
 import {logIn} from "../../../lib/session/sessionHandler"
 import {loginFormNames} from "../../../lib/models/form-names/login"
 
-export const post: RequestHandler = async ({request}) => {
+export const POST: RequestHandler = async ({request}) => {
   const form = await request.formData()
 
   const cookies = await logIn(

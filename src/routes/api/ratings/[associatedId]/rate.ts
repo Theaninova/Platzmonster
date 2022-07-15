@@ -2,7 +2,7 @@ import type {RequestHandler} from "./__types/rate"
 import {Rating} from "../../../../lib/models/rating"
 import {rateFormNames} from "../../../../lib/models/form-names/rate"
 
-export const post: RequestHandler = async ({request, locals, params}) => {
+export const POST: RequestHandler = async ({request, locals, params}) => {
   if (!locals.user) {
     return {status: 401}
   }

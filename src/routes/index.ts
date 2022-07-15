@@ -3,7 +3,7 @@ import {clearDatabase, insertAdmins, insertUsers} from "../lib/models/mock/seedU
 import {insertPlaces} from "../lib/models/mock/seedPlaces"
 import {insertRatings} from "../lib/models/mock/seedRatings"
 
-export const get: RequestHandler = async ({locals}) => {
+export const GET: RequestHandler = async ({locals}) => {
   return {
     status: 202,
     body: {
@@ -12,7 +12,7 @@ export const get: RequestHandler = async ({locals}) => {
   }
 }
 
-export const post: RequestHandler = async ({request}) => {
+export const POST: RequestHandler = async ({request}) => {
   const form = await request.formData()
 
   if (form.has("insertUsers")) {

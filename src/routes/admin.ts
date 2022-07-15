@@ -9,7 +9,7 @@ export const searchFormNames = {
   prev: "prev",
 }
 
-export async function get() {
+export async function GET() {
   return {
     body: {
       users: await User.find(),
@@ -17,7 +17,7 @@ export async function get() {
   }
 }
 
-export const post: RequestHandler = async ({request}) => {
+export const POST: RequestHandler = async ({request}) => {
   const form = await request.formData()
 
   const user = await User.findByIdAndDelete(form.get("delete"))

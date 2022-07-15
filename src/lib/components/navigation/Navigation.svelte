@@ -15,7 +15,7 @@
     <ul in:fly={{duration: 200, delay: 100, x: 100}} out:fly={{duration: 200, x: 100}}>
       <Route href="map" icon="map">Karte</Route>
       <Route href="place/search" icon="domain_add">Reservieren</Route>
-      <Route href="user/search" icon="group_add">Freunde</Route>
+      <Route href="user/search" icon="group">Personen</Route>
       <li class="divider" />
 
       {#if $session.user?.userType === UserType.ADMIN}

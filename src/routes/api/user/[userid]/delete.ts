@@ -1,7 +1,7 @@
 import {User, UserType} from "../../../../lib/models/user"
 import type {RequestHandler} from "@sveltejs/kit"
 
-export const post: RequestHandler = async ({request, locals}) => {
+export const POST: RequestHandler = async ({request, locals}) => {
   if (locals.user?.userType !== UserType.ADMIN) {
     return {
       status: 401,

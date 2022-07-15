@@ -4,7 +4,7 @@ import type {RequestHandler} from "./__types/register"
 import {logIn} from "../lib/session/sessionHandler"
 import {userDataFormNames} from "../lib/models/form-names/user-data"
 
-export const post: RequestHandler = async ({request, locals}) => {
+export const POST: RequestHandler = async ({request, locals}) => {
   const form = await request.formData()
 
   const user = await User.findOne({name: form.get(userDataFormNames.name)})
