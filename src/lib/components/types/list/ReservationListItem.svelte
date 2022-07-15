@@ -1,21 +1,15 @@
 <script lang="ts">
-    import type {IReservation} from "../../../models/reservation";
+  import type {IReservation} from "../../../models/reservation"
 
-    export let item: IReservation
-
-
+  export let item: IReservation
 </script>
 
 <div style="text-overflow: ellipsis">
-
-   <h3> Reservierung </h3>
-    <p> von: {item.from} </p>
-    <p> bis: {item.to} </p>
-    <p class="card"> Nutzer: {item.userId}</p>
-
+  <h3>Reservierung</h3>
+  <p>von: {item.from}</p>
+  <p>bis: {item.to}</p>
+  <p class="card">Nutzer: {item.userId}</p>
 </div>
-
-
 
 <style lang="scss">
   div {
