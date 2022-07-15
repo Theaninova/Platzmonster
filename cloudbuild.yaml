@@ -1,20 +1,24 @@
 steps:
   # Build the container image
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA', '.']
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA", "."]
+    env:
+      - 'MONGO_ATLAS=$_MONGO_ATLAS'
+      - 'MONGO_ATLAS_USER=$_MONGO_ATLAS_USER'
+      - 'MONGO_ATLAS_PASSWORD=$_MONGO_ATLAS_PASSWORD'
   # Push the container image to Container Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA']
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA"]
   # Deploy container image to Cloud Run
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: gcloud
     args:
-      - 'run'
-      - 'deploy'
-      - 'platzmonster-service'
-      - '--image'
-      - 'gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA'
-      - '--region'
-      - '15'
+      - "run"
+      - "deploy"
+      - "platzmonster-service"
+      - "--image"
+      - "gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA"
+      - "--region"
+      - "15"
 images:
-  - 'gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA'
+  - "gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA"
