@@ -6,7 +6,7 @@
 
 {#key activeRoute}
   <main
-    style="margin-inline: {activeRoute.endsWith('map') ? 0 : 8}px"
+    class:map-route={activeRoute.endsWith("map")}
     in:fly={{duration: 200, delay: 200, y: 30}}
     out:fly={{duration: 200, y: 30}}
   >
@@ -45,5 +45,15 @@
       height: calc(100% + 16px);
       margin-inline: 8px;
     }
+
+    .map-route {
+      margin-inline: 0;
+    }
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    background-color: black;
+    opacity: 0.6;
   }
 </style>

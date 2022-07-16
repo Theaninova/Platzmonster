@@ -39,7 +39,6 @@
       maxlength="30"
       size="30"
       placeholder="Kürzel eingeben"
-      required
     />
   </fieldset>
 

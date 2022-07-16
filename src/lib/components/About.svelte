@@ -1,5 +1,3 @@
-<h1>Platzmonster</h1>
-
 <p>
   Deine Pläne produktiv zu lernen werden davon gestört, dass du in der Bibliothek erstmal 30 Minuten nach
   einem freien Platz suchen musst? Wir das Platzmonster-Team haben uns es als Ziel gesetzt dem endgültig ein

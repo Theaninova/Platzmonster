@@ -7,5 +7,6 @@
   <h1>Dashboard</h1>
   <p>Hallo, {$session.user.firstname}</p>
 {:else}
+  <h1>Platzmonster</h1>
   <About />
 {/if}

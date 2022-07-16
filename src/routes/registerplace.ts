@@ -13,7 +13,7 @@ export const POST: RequestHandler = async ({request, locals}) => {
 
   await new Place({
     type: form.get("registerplacetype") as string,
-    name: form.get("regname") as string,
+    name: form.get("regplacename") as string,
     shortname: form.get("regshortname") as string,
     adress: form.get("regadress") as string,
     number: form.get("regnumber") as string,
