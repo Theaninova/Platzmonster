@@ -75,7 +75,7 @@
     background: white;
     padding: 16px;
 
-    margin: auto;
+    margin-inline: auto;
 
     display: grid;
     gap: 4px;

@@ -26,8 +26,8 @@
     </ul>
   {:else}
     <ul in:fly={{duration: 200, delay: 100, x: -20}} out:fly={{duration: 200, x: -20}}>
-      <Route href="register" icon="how_to_reg">Registrieren</Route>
-      <Route href="login" icon="login" shrink={false} iconOnly />
+      <!-- <Route href="register" icon="how_to_reg">Registrieren</Route> -->
+      <Route href="login" icon="login">Login</Route>
     </ul>
   {/if}
 </nav>
