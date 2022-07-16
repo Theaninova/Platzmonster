@@ -46,6 +46,25 @@
     grid-template-rows: min-content auto;
   }
 
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    margin-block: 2px;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: darken($primary-color, 20%);
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: darken($primary-color, 30%);
+    }
+  }
+
   @media (max-width: $breakpoint-phone) {
     body {
       grid-template-rows: 1fr auto;

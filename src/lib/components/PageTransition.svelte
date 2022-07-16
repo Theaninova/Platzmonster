@@ -50,10 +50,4 @@
       margin-inline: 0;
     }
   }
-
-  *::-webkit-scrollbar {
-    width: 8px;
-    background-color: black;
-    opacity: 0.6;
-  }
 </style>
