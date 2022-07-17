@@ -1,3 +1,4 @@
+
 import {PASSWORD_SALT_ROUNDS, User} from "$lib/models/user"
 import bcrypt from "bcrypt"
 import type {RequestHandler} from "./__types/register"
