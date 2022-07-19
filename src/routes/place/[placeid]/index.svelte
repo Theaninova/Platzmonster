@@ -26,7 +26,8 @@
       <td> {item.description || "-"}</td>
     </tr>
     <tr>
-      <button type="button"> Reservieren </button>
+      <a href="/place/{item._id}/reserve"><abbr title={item._id}>Reservierungen einsehen</abbr></a>
+
     </tr>
   </table>
 </div>
