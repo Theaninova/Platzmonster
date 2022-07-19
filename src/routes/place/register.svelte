@@ -1,12 +1,17 @@
 <script>
-  import {enhance} from "../lib/form"
-  import {refreshUser} from "../lib/refresh-user"
-  import PlaceDataForm from "../lib/components/types/forms/PlaceDataForm.svelte";
+  import {enhance} from "../../lib/form"
+  import {refreshUser} from "../../lib/refresh-user"
+  import PlaceDataForm from "../../lib/components/types/forms/PlaceDataForm.svelte"
 </script>
 
 <h1>Arbeitsplatz Registrieren</h1>
 
-<form method="post" action="/registerplace" use:enhance={{redirect: "/"}} class="card">
+<form
+  method="post"
+  action="/place/register"
+  use:enhance={{redirect: "/", result: refreshUser}}
+  class="card"
+>
   <PlaceDataForm />
 
   <button type="submit"> Arbeitsplatz erstellen </button>
