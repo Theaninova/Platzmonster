@@ -6,12 +6,7 @@
 
 <h1>Arbeitsplatz Registrieren</h1>
 
-<form
-  method="post"
-  action="/place/register"
-  use:enhance={{redirect: "/", result: refreshUser}}
-  class="card"
->
+<form method="post" action="/place/register" use:enhance={{redirect: "/", result: refreshUser}} class="card">
   <PlaceDataForm />
 
   <button type="submit"> Arbeitsplatz erstellen </button>
