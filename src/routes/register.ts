@@ -1,8 +1,16 @@
-import {PASSWORD_SALT_ROUNDS, User} from "$lib/models/user"
+import {PASSWORD_SALT_ROUNDS, User, UserType} from "$lib/models/user"
 import bcrypt from "bcrypt"
 import type {RequestHandler} from "./__types/register"
 import {logIn} from "../lib/session/sessionHandler"
 import {userDataFormNames} from "../lib/models/form-names/user-data"
+
+export const GET: RequestHandler = async ({locals}) => {
+  return {
+    body: {
+      isAdmin: locals.user?.userType === UserType.ADMIN,
+    },
+  }
+}
 
 export const POST: RequestHandler = async ({request, locals}) => {
   const form = await request.formData()

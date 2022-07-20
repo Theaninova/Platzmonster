@@ -2,12 +2,14 @@
   import {enhance} from "../lib/form"
   import {refreshUser} from "../lib/refresh-user"
   import UserDataForm from "../lib/components/types/forms/UserDataForm.svelte"
+
+  export let isAdmin
 </script>
 
 <h1>Registrieren</h1>
 
 <form method="post" action="/register" use:enhance={{redirect: "/", result: refreshUser}} class="card">
-  <UserDataForm />
+  <UserDataForm {isAdmin} />
 
   <p>
     <input type="checkbox" id="agb" name="agb" required />

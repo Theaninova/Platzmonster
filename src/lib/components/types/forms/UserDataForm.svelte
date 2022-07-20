@@ -4,15 +4,18 @@
   import type {IUser} from "../../../models/user"
 
   export let user: IUser = undefined
+  export let isAdmin = false
 </script>
 
-<fieldset>
-  <label for="registerusertype"><i>badge</i>&nbsp;typ</label>
-  <select id="registerusertype" name={userDataFormNames.userType} required>
-    <option value="user">User</option>
-    <option value="admin">Admin</option>
-  </select>
-</fieldset>
+{#if isAdmin}
+  <fieldset>
+    <label for="registerusertype"><i>badge</i>&nbsp;typ</label>
+    <select id="registerusertype" name={userDataFormNames.userType} required>
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+  </fieldset>
+{/if}
 
 <fieldset>
   <label for="regusername"><i>account_circle</i></label>
