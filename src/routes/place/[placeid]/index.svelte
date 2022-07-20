@@ -3,6 +3,8 @@
   import SearchPage from "../../../lib/components/search/SearchPage.svelte"
   import PlaceListItem from "../../../lib/components/types/list/PlaceListItem.svelte"
   import {PlaceType} from "../../../lib/models/place.js"
+  import ReservationListItem from "../../../lib/components/types/list/ReservationListItem.svelte";
+  import {reservationDataForm} from "../../../lib/models/form-names/reservationData.js";
 
   export let item: IPlace
 </script>
@@ -27,23 +29,28 @@
       {/if}
     </tr>
     <tr>
-      <th> Beschreibung</th>
+      <th> Beschreibung: </th>
       <td> {item.description || "-"}</td>
     </tr>
     <tr>
+      {#if item.type === PlaceType.WORK_PLACE}
       <td>
-        <form>
-          <input type="datetime-local" min={new Date(Date.now()).toISOString()} />
+        <form method="post">
+          <input type="datetime-local" name={reservationDataForm.from} min={new Date(Date.now()).toISOString()} />
+          <input type="datetime-local" name={reservationDataForm.to} min={new Date(Date.now()).toISOString()} />
           <button type="submit">Test</button>
         </form>
       </td>
       <a href="/place/{item._id}/reserve"><abbr title={item._id}>Reservierungen einsehen</abbr></a>
+        {/if}
+
     </tr>
   </table>
 </div>
 
 {#if item.type === PlaceType.WORK_PLACE}
   <!-- TODO: Reservations -->
+  <SearchPage listItem={ReservationListItem} action="/api/reservations/reservation-search" />
 {:else}
   <SearchPage listItem={PlaceListItem} action="/api/place/{item._id}/children-search" />
 {/if}

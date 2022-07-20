@@ -1,6 +1,8 @@
 import type {RequestHandler} from "./__types/index"
 import {Place, PlaceType} from "../../../lib/models/place"
 import {Rating} from "../../../lib/models/rating"
+import {Reservation} from "../../../lib/models/reservation";
+import {reservationDataForm} from "../../../lib/models/form-names/reservationData";
 
 export const GET: RequestHandler = async ({params, locals}) => {
   const place = await Place.findById(params.placeid)
@@ -18,4 +20,14 @@ export const GET: RequestHandler = async ({params, locals}) => {
       status: 404,
     }
   }
+}
+
+export const POST: RequestHandler = async ({request, locals}) => {
+  const form = await request.formData()
+
+  await new Reservation( {
+    from: form.get(reservationDataForm.from),
+    to: form.get(reservationDataForm.to),
+  })
+
 }

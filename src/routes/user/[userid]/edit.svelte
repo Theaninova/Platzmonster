@@ -4,7 +4,7 @@
   export let user
 </script>
 
-<h1>Edit - TODO</h1>
+<h1>Edit</h1>
 
 <form method="post" class="card">
   <UserDataForm {user} />
