@@ -38,16 +38,8 @@
       {#if item.type === PlaceType.WORK_PLACE}
         <td>
           <form method="post" use:enhance={{result: () => searchButton?.click()}}>
-            <input
-              type="datetime-local"
-              name={reservationDataForm.from}
-              min={new Date(Date.now()).toISOString()}
-            />
-            <input
-              type="datetime-local"
-              name={reservationDataForm.to}
-              min={new Date(Date.now()).toISOString()}
-            />
+            <input type="datetime-local" name={reservationDataForm.from} required />
+            <input type="datetime-local" name={reservationDataForm.to} required />
             <button type="submit">Reservieren</button>
           </form>
         </td>

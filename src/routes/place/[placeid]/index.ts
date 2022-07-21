@@ -30,14 +30,14 @@ export const POST: RequestHandler = async ({request, params, locals}) => {
   if (from >= to) {
     return {
       status: 400,
-      body: "Invalid date range",
+      body: "Ungültige Zeitangabe",
     }
   }
 
   if (from < new Date()) {
     return {
       status: 400,
-      body: "Reservation cannot be in the past",
+      body: "Reservierung kann nicht in der Vergangenheit erfolgen",
     }
   }
 
@@ -50,7 +50,7 @@ export const POST: RequestHandler = async ({request, params, locals}) => {
   if (existingReservation.length > 0) {
     return {
       status: 400,
-      body: `Reserved by ${existingReservation.map(it => it.reservedId).join(", ")}`,
+      body: `Von ${existingReservation.map(it => it.reservedId).join(", ")} bereits reserviert`,
     }
   }
 
