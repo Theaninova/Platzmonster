@@ -1,6 +1,6 @@
 export const reservationDataForm = {
-    userId: "userid",
-    reservedId: "reservedid",
-    from: "from",
-    to: "to",
+  userId: "userid",
+  reservedId: "reservedid",
+  from: "from",
+  to: "to",
 }

@@ -29,12 +29,10 @@
     <p>{item.description}</p>
   {/if}
 
-  {#if item.type === PlaceType.BUILDING}
-    <p />
-  {:else if item.type === PlaceType.ROOM}
-    <button><a href="/place/{item.parentId}">Zum Gebäude <i>arrow_upward</i></a></button>
-  {:else}
-    <button><a href="/place/{item.parentId}">Zum Raum <i>arrow_upward</i></a></button>
+  {#if item.parentId}
+    <a class="parent-link" href="/place/{item.parentId}"
+      ><i>arrow_upward</i>{item.type === PlaceType.ROOM ? "Gebäude" : "Raum"} anzeigen</a
+    >
   {/if}
   <p />
 </div>
@@ -77,7 +75,12 @@
     color: black;
   }
 
-  a:hover {
+  a:not(.button):hover {
     text-decoration: underline black;
+  }
+
+  .parent-link {
+    display: flex;
+    align-items: center;
   }
 </style>

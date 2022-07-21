@@ -1,10 +1,10 @@
 import type {RequestHandler} from "./__types/index"
-import {Place, PlaceType} from "../../../lib/models/place"
+import {Place} from "../../../lib/models/place"
 import {Rating} from "../../../lib/models/rating"
-import {Reservation} from "../../../lib/models/reservation";
-import {reservationDataForm} from "../../../lib/models/form-names/reservationData";
+import {Reservation} from "../../../lib/models/reservation"
+import {reservationDataForm} from "../../../lib/models/form-names/reservationData"
 
-export const GET: RequestHandler = async ({params, locals}) => {
+export const GET: RequestHandler = async ({params}) => {
   const place = await Place.findById(params.placeid)
   const rating = await Rating.findById(params.placeid)
 
@@ -22,12 +22,46 @@ export const GET: RequestHandler = async ({params, locals}) => {
   }
 }
 
-export const POST: RequestHandler = async ({request, locals}) => {
+export const POST: RequestHandler = async ({request, params, locals}) => {
   const form = await request.formData()
 
-  await new Reservation( {
-    from: form.get(reservationDataForm.from),
-    to: form.get(reservationDataForm.to),
+  const from = new Date(form.get(reservationDataForm.from) as string)
+  const to = new Date(form.get(reservationDataForm.to) as string)
+  if (from >= to) {
+    return {
+      status: 400,
+      body: "Invalid date range",
+    }
+  }
+
+  if (from < new Date()) {
+    return {
+      status: 400,
+      body: "Reservation cannot be in the past",
+    }
+  }
+
+  const existingReservation = await Reservation.find({
+    from: {$gte: from},
+    to: {$lte: to},
+    reservedId: params.placeid,
   })
 
+  if (existingReservation.length > 0) {
+    return {
+      status: 400,
+      body: `Reserved by ${existingReservation.map(it => it.reservedId).join(", ")}`,
+    }
+  }
+
+  await new Reservation({
+    from,
+    to,
+    userId: locals.user?._id.toString(),
+    reservedId: params.placeid,
+  }).save()
+
+  return {
+    status: 201,
+  }
 }

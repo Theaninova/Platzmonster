@@ -6,9 +6,9 @@
 
 <div style="text-overflow: ellipsis">
   <h3>Reservierung</h3>
-  <p>von: {item.from}</p>
-  <p>bis: {item.to}</p>
-  <p class="card">Nutzer: {item.userId}</p>
+  <p>Von: {new Date(item.from).toLocaleString()}</p>
+  <p>Bis: {new Date(item.to).toLocaleString()}</p>
+  <a class="parent-link" href="/user/{item.userId}"><i>person</i>Nutzer anzeigen</a>
 </div>
 
 <style lang="scss">
@@ -51,5 +51,10 @@
 
   a:hover {
     text-decoration: underline black;
+  }
+
+  .parent-link {
+    display: flex;
+    align-items: center;
   }
 </style>

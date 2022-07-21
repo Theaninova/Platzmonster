@@ -3,8 +3,9 @@
   import SearchPage from "../../../lib/components/search/SearchPage.svelte"
   import PlaceListItem from "../../../lib/components/types/list/PlaceListItem.svelte"
   import {PlaceType} from "../../../lib/models/place.js"
-  import ReservationListItem from "../../../lib/components/types/list/ReservationListItem.svelte";
-  import {reservationDataForm} from "../../../lib/models/form-names/reservationData.js";
+  import ReservationListItem from "../../../lib/components/types/list/ReservationListItem.svelte"
+  import {enhance} from "../../../lib/form"
+  import {reservationDataForm} from "../../../lib/models/form-names/reservationData"
 
   export let item: IPlace
 </script>
@@ -34,23 +35,29 @@
     </tr>
     <tr>
       {#if item.type === PlaceType.WORK_PLACE}
-      <td>
-        <form method="post">
-          <input type="datetime-local" name={reservationDataForm.from} min={new Date(Date.now()).toISOString()} />
-          <input type="datetime-local" name={reservationDataForm.to} min={new Date(Date.now()).toISOString()} />
-          <button type="submit">Test</button>
-        </form>
-      </td>
-      <a href="/place/{item._id}/reserve"><abbr title={item._id}>Reservierungen einsehen</abbr></a>
-        {/if}
-
+        <td>
+          <form method="post" use:enhance>
+            <input
+              type="datetime-local"
+              name={reservationDataForm.from}
+              min={new Date(Date.now()).toISOString()}
+            />
+            <input
+              type="datetime-local"
+              name={reservationDataForm.to}
+              min={new Date(Date.now()).toISOString()}
+            />
+            <button type="submit">Reservieren</button>
+          </form>
+        </td>
+      {/if}
     </tr>
   </table>
 </div>
 
 {#if item.type === PlaceType.WORK_PLACE}
   <!-- TODO: Reservations -->
-  <SearchPage listItem={ReservationListItem} action="/api/reservations/reservation-search" />
+  <SearchPage listItem={ReservationListItem} action="/api/place/{item._id}/reservation-search" />
 {:else}
   <SearchPage listItem={PlaceListItem} action="/api/place/{item._id}/children-search" />
 {/if}
@@ -64,6 +71,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    margin-bottom: 16px;
   }
 
   table,
