@@ -8,6 +8,7 @@
   import {reservationDataForm} from "../../../lib/models/form-names/reservationData"
 
   export let item: IPlace
+  let searchButton: HTMLButtonElement
 </script>
 
 <h1>{item.shortName || item.name}</h1>
@@ -36,7 +37,7 @@
     <tr>
       {#if item.type === PlaceType.WORK_PLACE}
         <td>
-          <form method="post" use:enhance>
+          <form method="post" use:enhance={{result: () => searchButton?.click()}}>
             <input
               type="datetime-local"
               name={reservationDataForm.from}
@@ -57,9 +58,13 @@
 
 {#if item.type === PlaceType.WORK_PLACE}
   <!-- TODO: Reservations -->
-  <SearchPage listItem={ReservationListItem} action="/api/place/{item._id}/reservation-search" />
+  <SearchPage
+    bind:searchButton
+    listItem={ReservationListItem}
+    action="/api/place/{item._id}/reservation-search"
+  />
 {:else}
-  <SearchPage listItem={PlaceListItem} action="/api/place/{item._id}/children-search" />
+  <SearchPage bind:searchButton listItem={PlaceListItem} action="/api/place/{item._id}/children-search" />
 {/if}
 
 <style>

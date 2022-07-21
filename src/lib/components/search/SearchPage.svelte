@@ -35,7 +35,7 @@
     searchButton.click()
   })
 
-  let searchButton: HTMLButtonElement
+  export let searchButton: HTMLButtonElement
 </script>
 
 <section class="card">

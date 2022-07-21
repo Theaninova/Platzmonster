@@ -42,8 +42,8 @@ export const POST: RequestHandler = async ({request, params, locals}) => {
   }
 
   const existingReservation = await Reservation.find({
-    from: {$gte: from},
-    to: {$lte: to},
+    to: {$gte: from},
+    from: {$lte: to},
     reservedId: params.placeid,
   })
 
