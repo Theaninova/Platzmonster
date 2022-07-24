@@ -1,8 +1,34 @@
 # Platzmonster
 
+[![](https://img.shields.io/website/https/platzmonster-service-bjkk4s72gq-ez.a.run.app)](https://platzmonster-service-bjkk4s72gq-ez.a.run.app)
+![](https://img.shields.io/github/license/Theaninova/Platzmonster)
+
 ![](/static/favicon.webp)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+  Deine Pläne produktiv zu lernen werden davon gestört, dass du in der Bibliothek erstmal 30 Minuten nach
+  einem freien Platz suchen musst? Wir das Platzmonster-Team haben uns es als Ziel gesetzt dem endgültig ein
+  Ende zu setzen.
+
+
+  Wir sind ein junges Team von Studenten, welches Studenten den Stress der Arbeitsplatzsuche ersparen will.
+
+
+## Features
+
+* Registrierung
+* Login
+* Admin Page
+* uvm.
+
+## Mitwirkende
+
+| Name               | Rolle         |
+|--------------------|---------------|
+| Thea Schöbl        | Product-Owner |
+| Alexander Tambunan | Scrum-Master  |
+| Simon Ostendorp    | Entwickler    |
+| Hoang Duc Nguyen   | Entwickler    |
+| Melvin Williams    | Entwickler    |
 
 ## Developing
 
