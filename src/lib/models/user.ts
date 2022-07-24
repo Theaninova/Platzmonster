@@ -11,6 +11,7 @@ export interface IUserRaw {
   name: string
   matrikelNumber: number
   userType: UserType
+  contact?: string
   password: string
   firstname: string
   lastname: string
@@ -29,6 +30,9 @@ const UserSchema = new mongoose.Schema({
   matrikelNumber: {
     required: true,
     type: Number,
+  },
+  contact: {
+    type: String,
   },
   userType: {
     required: true,

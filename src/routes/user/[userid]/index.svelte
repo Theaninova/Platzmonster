@@ -18,6 +18,12 @@
       <th>Email</th>
       <td>{item.email}</td>
     </tr>
+    {#if item.contact}
+      <tr>
+        <th>Kontakt</th>
+        <td><a href={item.contact}>{item.contact}</a></td>
+      </tr>
+    {/if}
   </table>
 </div>
 
@@ -26,6 +32,7 @@
     background: white;
     margin-inline: auto;
     max-width: 16.5cm;
+    padding: 16px;
 
     display: flex;
     flex-direction: column;

@@ -18,9 +18,6 @@
       <Route href="user/search" icon="group">Personen</Route>
       <li class="divider" />
 
-      {#if $session.user?.userType === UserType.ADMIN}
-        <Route href="admin" icon="admin_panel_settings" iconOnly />
-      {/if}
       <Route href="user/{$session.user?._id}" iconOnly icon="account_circle" />
       <li><LogoutButton /></li>
     </ul>

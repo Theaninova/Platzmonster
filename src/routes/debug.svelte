@@ -14,6 +14,7 @@
     <button type="submit" name="insertUsers">Insert Dummy Users</button>
     <button type="submit" name="insertPlaces">Insert Dummy Places</button>
     <button type="submit" name="insertRatings">Insert Dummy Ratings</button>
+    <button type="submit" name="insertReservations">Insert Dummy Reservations</button>
   </form>
 
   {#if user}

@@ -4,7 +4,7 @@
   export let place
 </script>
 
-<h1>Arbeitsplatz bearbeiten</h1>
+<h1>Ort bearbeiten</h1>
 
 <form method="post" class="card">
   <PlaceDataForm {place} />

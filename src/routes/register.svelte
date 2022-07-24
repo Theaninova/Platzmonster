@@ -13,7 +13,8 @@
 
   <p>
     <input type="checkbox" id="agb" name="agb" required />
-    Mit der Anmeldung bestätige ich, dass ich die Allgemeinen Geschäftsbedingungen akzeptiere und die Datenschutzrichtlinien
+    Mit der Anmeldung bestätige ich, dass ich die <a href="/agb">Allgemeinen Geschäftsbedingungen</a>
+    akzeptiere und die <a href="/datenschutz">Datenschutzrichtlinien</a>
     gelesen habe.
   </p>
 

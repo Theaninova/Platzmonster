@@ -8,7 +8,10 @@ export const POST: RequestHandler = async ({request, params}) => {
   const page = Number.parseInt(form.get(searchFormNames.page) as string) || 0
   const entriesPerPage = Number.parseInt(form.get(searchFormNames.entriesPerPage) as string) || 20
 
-  const action = query === "*" || !query ? {reservedId: params.placeid} : {$text: {$search: query}}
+  const action =
+    query === "*" || !query
+      ? {reservedId: params.placeid}
+      : {reservedId: params.placeid, $text: {$search: query}}
 
   const count = await Reservation.find(action).countDocuments()
   const result = await Reservation.find(action)
