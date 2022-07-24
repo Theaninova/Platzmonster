@@ -6,6 +6,9 @@
   import ReservationListItem from "../../../lib/components/types/list/ReservationListItem.svelte"
   import {enhance} from "../../../lib/form"
   import {reservationDataForm} from "../../../lib/models/form-names/reservationData"
+  import {session} from "$app/stores"
+  import {UserType} from "../../../lib/models/user.js"
+  import RatingAction from "../../../lib/components/types/actions/RatingAction.svelte"
 
   export let item: IPlace
   let searchButton: HTMLButtonElement
@@ -46,21 +49,38 @@
       {/if}
     </tr>
   </table>
+
+  {#if $session.user.userType === UserType.ADMIN}
+    <div class="manage">
+      <a href="/place/{item._id}/ratings">Bewertungen Verwalten</a>
+      <a href="/place/{item._id}/reservations">Reservierungen Verwalten</a>
+    </div>
+  {/if}
 </div>
 
 {#if item.type === PlaceType.WORK_PLACE}
-  <!-- TODO: Reservations -->
   <SearchPage
     bind:searchButton
     listItem={ReservationListItem}
     action="/api/place/{item._id}/reservation-search"
   />
 {:else}
-  <SearchPage bind:searchButton listItem={PlaceListItem} action="/api/place/{item._id}/children-search" />
+  <SearchPage
+    bind:searchButton
+    listItem={PlaceListItem}
+    actionButtons={RatingAction}
+    action="/api/place/{item._id}/children-search"
+  />
 {/if}
 
 <style>
+  .manage {
+    display: flex;
+    flex-direction: column;
+  }
+
   .card {
+    padding: 16px;
     background: white;
     margin-inline: auto;
     max-width: 16.5cm;
