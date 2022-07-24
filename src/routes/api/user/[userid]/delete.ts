@@ -1,7 +1,7 @@
 import {User, UserType} from "../../../../lib/models/user"
-import type {RequestHandler} from "@sveltejs/kit"
+import type {RequestHandler} from "./__types/delete"
 
-export const POST: RequestHandler = async ({request, locals}) => {
+export const POST: RequestHandler = async ({locals, params}) => {
   if (locals.user?.userType !== UserType.ADMIN) {
     return {
       status: 401,
@@ -9,18 +9,15 @@ export const POST: RequestHandler = async ({request, locals}) => {
     }
   }
 
-  const form = await request.formData()
-
-  const user = await User.findByIdAndDelete(form.get("delete"))
+  const user = await User.findByIdAndDelete(params.userid)
 
   if (user) {
     return {
-      headers: {location: "/admin"},
-      status: 302,
+      status: 200,
     }
   }
 
   return {
-    status: 401,
+    status: 404,
   }
 }
