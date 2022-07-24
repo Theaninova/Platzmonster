@@ -20,15 +20,15 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA"]
   # Deploy container image to Cloud Run
-  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
-    entrypoint: gcloud
-    args:
-      - "run"
-      - "deploy"
-      - "platzmonster-service"
-      - "--image"
-      - "gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA"
-      - "--region"
-      - "15"
+  #  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+  #    entrypoint: gcloud
+  #    args:
+  #      - "run"
+  #      - "deploy"
+  #      - "platzmonster-service"
+  #      - "--image"
+  #      - "gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA"
+  #      - "--region"
+  #      - "15"
 images:
   - "gcr.io/$PROJECT_ID/platzmonster-service:$COMMIT_SHA"
