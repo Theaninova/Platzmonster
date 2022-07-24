@@ -114,5 +114,5 @@
   required
 >
   <!--suppress XmlInvalidId -->
-  <label for="regpassword"><i>password</i></label>
+  <label for="passwordConfirmation"><i>password</i></label>
 </PasswordInput>
