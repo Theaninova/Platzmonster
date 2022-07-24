@@ -42,7 +42,7 @@ export const POST: RequestHandler = async ({request, locals}) => {
   await new User({
     name: form.get(userDataFormNames.name) as string,
     matrikelNumber: form.get(userDataFormNames.matrikelNumber) as string,
-    userType: form.get(userDataFormNames.userType) as string,
+    userType: form.get(userDataFormNames.userType) || UserType.USER,
     firstname: form.get(userDataFormNames.firstName) as string,
     lastname: form.get(userDataFormNames.lastName) as string,
     email: form.get(userDataFormNames.email) as string,
