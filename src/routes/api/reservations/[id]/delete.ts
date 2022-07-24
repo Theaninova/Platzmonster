@@ -3,21 +3,23 @@ import {UserType} from "../../../../lib/models/user"
 import {Reservation} from "../../../../lib/models/reservation"
 
 export const POST: RequestHandler = async ({locals, params}) => {
-  if (locals.user?.userType !== UserType.ADMIN) {
+  const reservation = await Reservation.findById(params.id)
+  if (!reservation) {
+    return {
+      status: 404,
+    }
+  }
+
+  if (locals.user?.userType !== UserType.ADMIN && reservation.userId !== locals.user?._id.toString()) {
     return {
       status: 401,
       body: "Unauthorized",
     }
   }
 
-  const reservation = await Reservation.findByIdAndDelete(params.id)
+  await reservation.deleteOne()
 
-  if (reservation) {
-    return {
-      status: 200,
-    }
-  }
   return {
-    status: 404,
+    status: 200,
   }
 }
