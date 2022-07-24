@@ -57,7 +57,7 @@
   </section>
 </div>
 
-<style>
+<style lang="scss">
   .content,
   p {
     max-width: 18.5cm;
@@ -70,6 +70,7 @@
 
   .content {
     display: grid;
+    width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-items: center;
     gap: 4px;
